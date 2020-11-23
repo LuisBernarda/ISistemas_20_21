@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace Projeto_IS
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public String urlAux { get; set; }
+
+        public Main()
         {
             InitializeComponent();
         }
@@ -22,6 +24,10 @@ namespace Projeto_IS
 
         }
 
-       
+        private void inREST_Click(object sender, EventArgs e)
+        {
+            inREST formAux = new inREST();
+            formAux.ShowDialog();
+        }
     }
 }
