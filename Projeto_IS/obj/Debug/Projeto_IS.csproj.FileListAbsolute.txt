@@ -1,0 +1,11 @@
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Projeto_IS.exe.config
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Projeto_IS.exe
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Projeto_IS.pdb
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csprojAssemblyReference.cache
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.Properties.Resources.resources
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csproj.GenerateResource.cache
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csproj.CoreCompileInputs.cache
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.exe
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.pdb
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.Main.resources
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.inREST.resources

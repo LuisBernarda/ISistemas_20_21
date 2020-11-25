@@ -1,7 +1,7 @@
 ﻿
 namespace Projeto_IS
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -140,6 +140,7 @@ namespace Projeto_IS
             this.inREST.TabIndex = 0;
             this.inREST.Text = "REST";
             this.inREST.UseVisualStyleBackColor = true;
+            this.inREST.Click += new System.EventHandler(this.inREST_Click);
             // 
             // projetoIS
             // 
