@@ -12,7 +12,7 @@ namespace Projeto_IS
 {
     public partial class Main : Form
     {
-        public String urlAux { get; set; }
+        public String inRESTuriAux { get; set; }
 
         public Main()
         {
@@ -21,12 +21,12 @@ namespace Projeto_IS
 
         private void outHTML_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine(inRESTuriAux);
         }
 
         private void inREST_Click(object sender, EventArgs e)
         {
-            inREST formAux = new inREST();
+            inREST formAux = new inREST(this);
             formAux.ShowDialog();
         }
     }

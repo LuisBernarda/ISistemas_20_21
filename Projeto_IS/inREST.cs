@@ -12,9 +12,12 @@ namespace Projeto_IS
 {
     public partial class inREST : Form
     {
-        public inREST()
+        Main formAux;
+
+        public inREST(Main mainAux)
         {
             InitializeComponent();
+            formAux = mainAux;
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -24,9 +27,16 @@ namespace Projeto_IS
                 MessageBox.Show("Erro! Por favor introduza um URL");
             } else
             {
-                MessageBox.Show("Sucesso!");
-                
-                this.Close();
+                Uri outUri;
+
+                if (Uri.TryCreate(url.Text, UriKind.Absolute, out outUri)
+                   && (outUri.Scheme == Uri.UriSchemeHttp || outUri.Scheme == Uri.UriSchemeHttps))
+                {
+                    MessageBox.Show("Sucesso!");
+                    formAux.inRESTuriAux = url.Text;
+                    this.Close();
+                }
+                MessageBox.Show("Erro! URI Inválida!");
             }
 
         }
