@@ -29,5 +29,12 @@ namespace Projeto_IS
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
         }
+
+        private void inXML_Click(object sender, EventArgs e)
+        {
+            inXML formXML = new inXML(this);
+            formXML.ShowDialog();
+        }
     }
 }
+        
