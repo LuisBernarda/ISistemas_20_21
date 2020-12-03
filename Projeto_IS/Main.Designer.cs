@@ -143,6 +143,7 @@ namespace Projeto_IS
             this.inXML.TabIndex = 1;
             this.inXML.Text = "XML";
             this.inXML.UseVisualStyleBackColor = true;
+            this.inXML.Click += new System.EventHandler(this.inXML_Click);
             // 
             // inREST
             // 
@@ -179,6 +180,8 @@ namespace Projeto_IS
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Main
             // 
             // Main
             // 
