@@ -37,16 +37,18 @@ namespace Projeto_IS
             // 
             // url
             // 
-            this.url.Location = new System.Drawing.Point(105, 87);
+            this.url.Location = new System.Drawing.Point(210, 169);
+            this.url.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.url.Name = "url";
-            this.url.Size = new System.Drawing.Size(340, 22);
+            this.url.Size = new System.Drawing.Size(676, 38);
             this.url.TabIndex = 0;
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(355, 147);
+            this.OK.Location = new System.Drawing.Point(710, 285);
+            this.OK.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(93, 49);
+            this.OK.Size = new System.Drawing.Size(186, 95);
             this.OK.TabIndex = 1;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
@@ -54,9 +56,10 @@ namespace Projeto_IS
             // 
             // cancelar
             // 
-            this.cancelar.Location = new System.Drawing.Point(105, 147);
+            this.cancelar.Location = new System.Drawing.Point(210, 285);
+            this.cancelar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cancelar.Name = "cancelar";
-            this.cancelar.Size = new System.Drawing.Size(93, 49);
+            this.cancelar.Size = new System.Drawing.Size(186, 95);
             this.cancelar.TabIndex = 2;
             this.cancelar.Text = "Cancelar";
             this.cancelar.UseVisualStyleBackColor = true;
@@ -65,23 +68,26 @@ namespace Projeto_IS
             // label_url
             // 
             this.label_url.AutoSize = true;
-            this.label_url.Location = new System.Drawing.Point(105, 64);
+            this.label_url.Location = new System.Drawing.Point(210, 124);
+            this.label_url.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label_url.Name = "label_url";
-            this.label_url.Size = new System.Drawing.Size(86, 17);
+            this.label_url.Size = new System.Drawing.Size(170, 32);
             this.label_url.TabIndex = 3;
             this.label_url.Text = "Insira a URL";
             // 
             // inREST
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 277);
+            this.ClientSize = new System.Drawing.Size(1140, 537);
             this.Controls.Add(this.label_url);
             this.Controls.Add(this.cancelar);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.url);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "inREST";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.inREST_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
