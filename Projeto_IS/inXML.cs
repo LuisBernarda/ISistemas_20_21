@@ -46,21 +46,17 @@ namespace Projeto_IS
                 //A variavel "jsonText" contem  o JSON já convertido 
                 string jsonText = JsonConvert.SerializeXmlNode(doc);
                 
-                
                 /*
-                //MessageBox.Show(jsonText);
+                MessageBox.Show(jsonText);
                 
-                //String output = "C:\\Users\\Celso Reis\\Desktop\\file.json"; 
-
-                using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
-                {
+                String output = "C:\\Users\\Celso Reis\\Desktop\\file.json"; 
+                using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write)){
                     StreamWriter write = new StreamWriter(fs);
                     write.Write(JsonConvert.SerializeObject(jsonText));
                     write.Flush();
                     write.Close();
                     fs.Close();
-                }
-                */
+                }*/
             }
         }
 

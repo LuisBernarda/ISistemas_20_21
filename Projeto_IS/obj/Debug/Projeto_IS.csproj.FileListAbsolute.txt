@@ -63,3 +63,14 @@ C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\obj\Debug\Pr
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.CopyComplete
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.exe
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.pdb
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\ExcelDataReader.dll
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.dll
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.OOXML.dll
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\ExcelDataReader.xml
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.ResolveComReference.cache
