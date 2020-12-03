@@ -68,9 +68,9 @@ namespace Projeto_IS
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(31, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "URL:";
+            this.label1.Text = "URL";
             // 
             // openFileDialog2
             // 
