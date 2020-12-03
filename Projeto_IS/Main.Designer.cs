@@ -41,6 +41,7 @@ namespace Projeto_IS
             this.inREST = new System.Windows.Forms.Button();
             this.projetoIS = new System.Windows.Forms.Label();
             this.executar = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.output.SuspendLayout();
             this.INPUT.SuspendLayout();
             this.SuspendLayout();
@@ -131,6 +132,7 @@ namespace Projeto_IS
             this.inEXCEL.TabIndex = 2;
             this.inEXCEL.Text = "Excel";
             this.inEXCEL.UseVisualStyleBackColor = true;
+            this.inEXCEL.Click += new System.EventHandler(this.inEXCEL_Click);
             // 
             // inXML
             // 
@@ -175,6 +177,12 @@ namespace Projeto_IS
             this.executar.Text = "Correr fluxos";
             this.executar.UseVisualStyleBackColor = true;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Main
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,6 +219,7 @@ namespace Projeto_IS
         private System.Windows.Forms.Button inREST;
         private System.Windows.Forms.Label projetoIS;
         private System.Windows.Forms.Button executar;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
