@@ -1,0 +1,13 @@
+/obj/Debug
+/bin/Debug
+
+*.exe
+*.config
+*.pdb
+*.cache
+*.cache
+*.cache
+*.txt
+*.cache
+*.resources
+Projeto_IS/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache

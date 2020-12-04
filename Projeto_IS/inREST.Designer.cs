@@ -86,8 +86,7 @@ namespace Projeto_IS
             this.Controls.Add(this.url);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "inREST";
-            this.Text = "Form2";
-            this.Load += new System.EventHandler(this.inREST_Load);
+            this.Text = "Fonte de dados REST";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -74,3 +74,18 @@ C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\Bo
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\ExcelDataReader.xml
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.xml
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.ResolveComReference.cache
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csproj.ResolveComReference.cache
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.inXML.resources
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\BouncyCastle.Crypto.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\ExcelDataReader.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Newtonsoft.Json.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\NPOI.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\NPOI.OOXML.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\NPOI.OpenXml4Net.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\NPOI.OpenXmlFormats.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Newtonsoft.Json.xml
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\BouncyCastle.Crypto.xml
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\ExcelDataReader.xml
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.xml
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csproj.CopyComplete
