@@ -21,3 +21,15 @@ C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Pro
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.exe
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.pdb
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.inXML.resources
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Projeto_IS.exe.config
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Projeto_IS.exe
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\Projeto_IS.pdb
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csprojAssemblyReference.cache
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.inXML.resources
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.Main.resources
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.inREST.resources
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.Properties.Resources.resources
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csproj.GenerateResource.cache
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csproj.CoreCompileInputs.cache
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.exe
+D:\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.pdb
