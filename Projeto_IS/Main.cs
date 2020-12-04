@@ -16,12 +16,13 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using RestSharp;
 
 namespace Projeto_IS
 {
     public partial class Main : Form
     {
-        public String inRESTuriAux { get; set; }
+        public String inRESTuriAux;
 
         public Main()
         {
@@ -35,6 +36,8 @@ namespace Projeto_IS
 
         private void inREST_Click(object sender, EventArgs e)
         {
+            //passar a form main para a nova form de modo a poder alterar a variavel inRESTuriAux dentro da form nova
+            //por enquanto funciona, se der tempo, utilizaçao de interfaces seria uma melhor soluçao
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
         }
@@ -112,6 +115,17 @@ namespace Projeto_IS
         {
             inXML formXML = new inXML(this);
             formXML.ShowDialog();
+        }
+
+        private String restToJSON(String uriAux)
+        {
+            var client = new RestClient(uriAux);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("content-type", "application/json");
+            var queryResult = client.Execute<Object>(request).Data;
+            string json = JsonConvert.SerializeObject(queryResult);
+
+            return json;
         }
     }
 

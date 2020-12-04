@@ -89,3 +89,5 @@ H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\
 H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\ExcelDataReader.xml
 H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.xml
 H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.csproj.CopyComplete
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\RestSharp.dll
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\RestSharp.xml

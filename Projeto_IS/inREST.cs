@@ -22,17 +22,20 @@ namespace Projeto_IS
 
         private void OK_Click(object sender, EventArgs e)
         {
+            //validaçao se string vazia
             if (String.IsNullOrEmpty(url.Text))
             {
                 MessageBox.Show("Erro! Por favor introduza um URL");
             } else
             {
+                //validacao se URI inserida é válida com recurso à biblioteca URI
                 Uri outUri;
 
                 if (Uri.TryCreate(url.Text, UriKind.Absolute, out outUri)
                    && (outUri.Scheme == Uri.UriSchemeHttp || outUri.Scheme == Uri.UriSchemeHttps))
                 {
                     MessageBox.Show("Sucesso!");
+                    //guardar na main form a uri validada
                     formAux.inRESTuriAux = url.Text;
                     this.Close();
                 }
