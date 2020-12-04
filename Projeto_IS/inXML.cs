@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using Newtonsoft.Json;
 
 namespace Projeto_IS
 {
@@ -33,8 +36,27 @@ namespace Projeto_IS
 
             if (openFileDialog2.ShowDialog() == DialogResult.OK) {
 
-                textBox1.Text = openFileDialog2.FileName;
+                string path = openFileDialog2.FileName;
+                textBox1.Text = path;
                 MessageBox.Show(textBox1.Text);
+                XmlDocument doc = new XmlDocument();
+
+                doc.Load(path);
+
+                //A variavel "jsonText" contem  o JSON já convertido 
+                string jsonText = JsonConvert.SerializeXmlNode(doc);
+                
+                /*
+                MessageBox.Show(jsonText);
+                
+                String output = "C:\\Users\\Celso Reis\\Desktop\\file.json"; 
+                using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write)){
+                    StreamWriter write = new StreamWriter(fs);
+                    write.Write(JsonConvert.SerializeObject(jsonText));
+                    write.Flush();
+                    write.Close();
+                    fs.Close();
+                }*/
             }
         }
 
