@@ -10,4 +10,5 @@
 *.txt
 *.cache
 *.resources
+*.suo
 Projeto_IS/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
