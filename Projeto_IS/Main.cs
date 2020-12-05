@@ -23,6 +23,8 @@ namespace Projeto_IS
     public partial class Main : Form
     {
         public String inRESTuriAux;
+        public String outRestMethod;
+        public String outRestURI;
 
         public Main()
         {
@@ -126,6 +128,12 @@ namespace Projeto_IS
             string json = JsonConvert.SerializeObject(queryResult);
 
             return json;
+        }
+
+        private void outREST_Click(object sender, EventArgs e)
+        {
+            outREST formOutREST = new outREST(this);
+            formOutREST.ShowDialog();
         }
     }
 

@@ -111,6 +111,7 @@ namespace Projeto_IS
             this.outREST.TabIndex = 0;
             this.outREST.Text = "REST";
             this.outREST.UseVisualStyleBackColor = true;
+            this.outREST.Click += new System.EventHandler(this.outREST_Click);
             // 
             // INPUT
             // 
