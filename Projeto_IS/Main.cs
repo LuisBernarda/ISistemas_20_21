@@ -46,9 +46,24 @@ namespace Projeto_IS
 
         private void outHTML_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Escolha a pasta para gravar!!!!");
-            outputHTML(jsonString);
            
+            SaveFileDialog exportHtml = new SaveFileDialog();
+
+            if (exportHtml.ShowDialog() == DialogResult.OK)
+            {
+                outPath = Path.GetFullPath(exportHtml.FileName);
+                outputHTML(jsonString, outPath);
+                MessageBox.Show("Sucesso!");
+
+            }
+            else
+            {
+                MessageBox.Show("Erro! Ocorreu um erro a gravar o ficheiro ");
+            }
+
+            createFlowString(inMethod, inPath, outMethod, outPath);
+
+
 
         }
 
@@ -59,7 +74,9 @@ namespace Projeto_IS
             
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
-            
+            jsonString = restToJSON(inPath);
+
+
         }
 
         private void inEXCEL_Click(object sender, EventArgs e)
@@ -214,30 +231,22 @@ namespace Projeto_IS
         }
 
 
-        private string outputHTML(string strJason)
+        private string outputHTML(string strJason, string nome)
         {
-            var folderBrowserDialog1 = new FolderBrowserDialog();
-
-            // Show the FolderBrowserDialog.
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string folderName = folderBrowserDialog1.SelectedPath;
-                //MessageBox.Show(inPath);
-                string path = $@"{folderName}\Output.html";
-                if (!File.Exists(path))
-                {
-                    // criar o ficheiro para escrever 
-                    using (StreamWriter sw = File.CreateText(path))
-                    {
-                        sw.WriteLine(htmlString);
-                    }
-                }
-            }
             MessageBox.Show(strJason);
             DataTable dtTable = new DataTable();
             dtTable = convertStringToDataTable(jsonString);
             htmlString = ExportDatatableToHtml(dtTable);
+
+            //MessageBox.Show(inPath);
+            string path = nome;
+         
+           // criar o ficheiro para escrever 
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                        sw.WriteLine(htmlString);
+            }
+           
 
             return htmlString;
         }

@@ -45,7 +45,8 @@ namespace Projeto_IS
 
                 //A variavel "jsonText" contem  o JSON já convertido 
                 string jsonText = JsonConvert.SerializeXmlNode(doc);
-                
+                formXML.jsonString = jsonText;
+
                 /*
                 MessageBox.Show(jsonText);
                 
@@ -57,6 +58,9 @@ namespace Projeto_IS
                     write.Close();
                     fs.Close();
                 }*/
+
+                formXML.inPath = path;
+                formXML.inMethod = "XML";
             }
         }
 
