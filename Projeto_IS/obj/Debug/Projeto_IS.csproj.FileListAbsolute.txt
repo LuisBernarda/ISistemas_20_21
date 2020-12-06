@@ -47,7 +47,6 @@ C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Pro
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.CoreCompileInputs.cache
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.exe
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.pdb
-C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.inXML.resources
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\Projeto_IS.exe.config
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\Projeto_IS.exe
 C:\Users\Celso Reis\Documents\PRojeto_IS\ISistemas_20_21\Projeto_IS\bin\Debug\Projeto_IS.pdb
@@ -96,3 +95,20 @@ C:\IS\ISistemas_20_21\Projeto_IS\bin\Debug\RestSharp.dll
 C:\IS\ISistemas_20_21\Projeto_IS\bin\Debug\RestSharp.xml
 C:\IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.inXML.resources
 C:\IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.outREST.resources
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\ExcelDataReader.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.OOXML.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\RestSharp.dll
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\ExcelDataReader.xml
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\RestSharp.xml
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.ResolveComReference.cache
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.outREST.resources
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.CopyComplete

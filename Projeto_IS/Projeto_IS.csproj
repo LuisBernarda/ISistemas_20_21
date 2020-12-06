@@ -81,12 +81,6 @@
     <Compile Include="outREST.Designer.cs">
       <DependentUpon>outREST.cs</DependentUpon>
     </Compile>
-    <Compile Include="inXML.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="inXML.Designer.cs">
-      <DependentUpon>inXML.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,9 +95,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="inXML.resx">
-      <DependentUpon>inXML.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

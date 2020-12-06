@@ -104,8 +104,35 @@ namespace Projeto_IS
         }
         private void inXML_Click(object sender, EventArgs e)
         {
-            inXML formXML = new inXML(this);
-            formXML.ShowDialog();
+            //inXML formXML = new inXML(this);
+            //jsonString = xmlToJSON(inPath);
+            //formXML.ShowDialog();
+            openFileDialog2.InitialDirectory = Application.StartupPath;
+            openFileDialog2.Filter = "xml files (*.xml)|*.xml";
+
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                string path = openFileDialog2.FileName;
+                MessageBox.Show(path);
+
+
+                inPath = path;
+                inMethod = "XML";
+                jsonString = xmlToJSON(inPath);
+
+            }
+        }
+
+        private String xmlToJSON(String path)
+        {
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            MessageBox.Show(path);
+            //A variavel "jsonText" contem  o JSON já convertido 
+            string jsonText = JsonConvert.SerializeXmlNode(doc);
+            MessageBox.Show(jsonText);
+            return jsonText;
         }
 
         private String restToJSON(String uriAux)
