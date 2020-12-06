@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<flows>
+  <flow>
+    <inputType>XML</inputType>
+    <inputPath>String</inputPath>
+    <outputType>HTML</outputType>
+    <outputPath>String</outputPath>
+  </flow>
+  <flow>
+    <inputType>XML</inputType>
+    <inputPath>String</inputPath>
+    <outputType>PUT</outputType>
+    <outputPath>String</outputPath>
+  </flow>
+</flows> 
