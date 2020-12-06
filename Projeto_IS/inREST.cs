@@ -39,8 +39,11 @@ namespace Projeto_IS
                     formAux.inPath = url.Text;
                     formAux.inMethod = "GET";          
                     this.Close();
+                } else
+                {
+                    MessageBox.Show("Erro! URI Inválida!");
                 }
-                MessageBox.Show("Erro! URI Inválida!");
+                
             }
 
         }
