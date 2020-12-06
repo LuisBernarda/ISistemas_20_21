@@ -17,38 +17,35 @@ using System.Runtime.InteropServices;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using RestSharp;
-<<<<<<< Updated upstream
 using System.Xml;
-=======
+
 using Newtonsoft.Json.Linq;
->>>>>>> Stashed changes
+using System.Text.RegularExpressions;
 
 namespace Projeto_IS
 {
     public partial class Main : Form
     {
-<<<<<<< Updated upstream
+
         public string inRestURI;
         public string inMethod;
         public string outMethod;
         public string outRestURI;
-=======
         public String inRESTuriAux;
         public String outRestMethod;
-        public String outRestURI;
         public String jsonString;
->>>>>>> Stashed changes
+
 
         public Main()
         {
             InitializeComponent();
         }
 
-        private void outHTML_Click(object sender, EventArgs e)
+        private void outHTML_Click(object sender, EventArgs e,String json)
         {
-<<<<<<< Updated upstream
+
             Console.WriteLine(inRestURI);
-=======
+
             Console.WriteLine(inRESTuriAux);
             string filename = "";
             string jason = "";
@@ -61,13 +58,12 @@ namespace Projeto_IS
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 filename = openFileDialog1.FileName;
-                MessageBox.Show(filename);
+                MessageBox.Show(jsonString);
                 DataTable dtTable = new DataTable();
                 dtTable = convertStringToDataTable(jsonString);
                 ExportDatatableToHtml(dtTable);
             }
 
->>>>>>> Stashed changes
         }
 
         private void inREST_Click(object sender, EventArgs e)
@@ -175,6 +171,7 @@ namespace Projeto_IS
            
             ExportDatatableToHtml(dtTable);
 
+
             return jsonString;
         }
 
@@ -186,7 +183,7 @@ namespace Projeto_IS
         protected string ExportDatatableToHtml(DataTable dt)
         {
             StringBuilder strHTMLBuilder = new StringBuilder();
-            strHTMLBuilder.Append("<html >");
+            strHTMLBuilder.Append("<html>");
             strHTMLBuilder.Append("<head>");
             strHTMLBuilder.Append("</head>");
             strHTMLBuilder.Append("<body>");
@@ -195,7 +192,7 @@ namespace Projeto_IS
             strHTMLBuilder.Append("<tr >");
             foreach (DataColumn myColumn in dt.Columns)
             {
-                strHTMLBuilder.Append("<td >");
+                strHTMLBuilder.Append("<td>");
                 strHTMLBuilder.Append(myColumn.ColumnName);
                 strHTMLBuilder.Append("</td>");
 
@@ -206,7 +203,7 @@ namespace Projeto_IS
             foreach (DataRow myRow in dt.Rows)
             {
 
-                strHTMLBuilder.Append("<tr >");
+                strHTMLBuilder.Append("<tr>");
                 foreach (DataColumn myColumn in dt.Columns)
                 {
                     strHTMLBuilder.Append("<td >");
@@ -228,13 +225,13 @@ namespace Projeto_IS
 
         }
 
-<<<<<<< Updated upstream
-        private string restToJSON(string uriAux)
-=======
+
+        //private string restToJSON(string uriAux)
+
         private String jsonToDatatable(String filename)
->>>>>>> Stashed changes
+
         {
-            string jsonString = "";
+            
             string output = "";
 
             output = $"{filename}.txt";
@@ -294,30 +291,62 @@ namespace Projeto_IS
             return jsonString;
         }
 
-        public static DataTable convertStringToDataTable(string data)
+        public static DataTable convertStringToDataTable(string jsonString)
         {
-            DataTable dataTable = new DataTable();
-            bool columnsAdded = false;
-            foreach (string row in data.Split('}'))
-            {
-                DataRow dataRow = dataTable.NewRow();
-                foreach (string cell in row.Split(':'))
+            
+                DataTable dt = new DataTable();
+                string[] jsonStringArray = Regex.Split(jsonString.Replace("[", "").Replace("]", ""), "},{");
+                List<string> ColumnsName = new List<string>();
+                foreach (string jSA in jsonStringArray)
                 {
-                    string[] keyValue = cell.Split(',');
-                    if (!columnsAdded)
+                    string[] jsonStringData = Regex.Split(jSA.Replace("{", "").Replace("}", ""), ",");
+                    foreach (string ColumnsNameData in jsonStringData)
                     {
-                        DataColumn dataColumn = new DataColumn(keyValue[0]);
-                        dataTable.Columns.Add(dataColumn);
+                        try
+                        {
+                            int idx = ColumnsNameData.IndexOf(":");
+                            string ColumnsNameString = ColumnsNameData.Substring(0, idx - 1).Replace("\"", "");
+                            if (!ColumnsName.Contains(ColumnsNameString))
+                            {
+                                ColumnsName.Add(ColumnsNameString);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception(string.Format("Error Parsing Column Name : {0}", ColumnsNameData));
+                        }
                     }
-                    dataRow[keyValue[0]] = keyValue[1];
+                    break;
                 }
-                columnsAdded = true;
-                dataTable.Rows.Add(dataRow);
-            }
-            return dataTable;
+                foreach (string AddColumnName in ColumnsName)
+                {
+                    dt.Columns.Add(AddColumnName);
+                }
+                foreach (string jSA in jsonStringArray)
+                {
+                    string[] RowData = Regex.Split(jSA.Replace("{", "").Replace("}", ""), ",");
+                    DataRow nr = dt.NewRow();
+                    foreach (string rowData in RowData)
+                    {
+                        try
+                        {
+                            int idx = rowData.IndexOf(":");
+                            string RowColumns = rowData.Substring(0, idx - 1).Replace("\"", "");
+                            string RowDataString = rowData.Substring(idx + 1).Replace("\"", "");
+                            nr[RowColumns] = RowDataString;
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
+                    }
+                    dt.Rows.Add(nr);
+                }
+                return dt;
+            
+
         }
 
-<<<<<<< Updated upstream
         private void export_Click(object sender, EventArgs e)
         {
             if (listaFluxos.Items.Count == 0)
@@ -377,9 +406,7 @@ namespace Projeto_IS
 
             listaFluxos.Items.Add(aux);
         }
-=======
 
->>>>>>> Stashed changes
     }
 
 }
