@@ -42,7 +42,7 @@ namespace Projeto_IS
                 {
                     MessageBox.Show("Sucesso!");
                     //guardar na main form a uri validada
-                    formAux.outRestURI = url.Text;
+                    formAux.outPath = url.Text;
                     formAux.outMethod = method.SelectedItem.ToString(); 
                     this.Close();
                 }

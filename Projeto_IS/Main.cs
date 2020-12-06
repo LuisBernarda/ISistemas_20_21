@@ -27,7 +27,7 @@ namespace Projeto_IS
     public partial class Main : Form
     {
 
-        public string inRestURI;
+        public string inPath;
         public string inMethod;
         public string outMethod;
         public string outRestURI;
@@ -35,6 +35,9 @@ namespace Projeto_IS
         public String outRestMethod;
         public String jsonString;
         public String htmlString;
+        public string outPath;
+        public string jsonString;
+        
 
 
         public Main()
@@ -45,31 +48,49 @@ namespace Projeto_IS
         private void outHTML_Click(object sender, EventArgs e)
         {
             outputHTML(jsonString);
+
+            string filename = "";
+            //string json = "";
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filename = openFileDialog1.FileName;
+                MessageBox.Show(jsonString);
+                DataTable dtTable = new DataTable();
+                dtTable = convertStringToDataTable(jsonString);
+                ExportDatatableToHtml(dtTable);
+            }
+
         }
 
         private void inREST_Click(object sender, EventArgs e)
         {
             //passar a form main para a nova form de modo a poder alterar a variavel inRESTuriAux dentro da form nova
             //por enquanto funciona, se der tempo, utilizaçao de interfaces seria uma melhor soluçao
+            
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
+            
         }
 
         private void inEXCEL_Click(object sender, EventArgs e)
         {
-            string filename = "";
-            string jason = "";
-
-
+                      
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                filename = openFileDialog1.FileName;
-                MessageBox.Show(filename);
-                jsonString = excelToJSON(filename);
+                inPath = openFileDialog1.FileName;
+                MessageBox.Show(inPath);
+
+                //este ultimo so vai ser invocado no correr fluxos
+                //jsonString = excelToJSON(filename);
 
             }
 
@@ -219,6 +240,7 @@ namespace Projeto_IS
         }
 
         private String jsonToDatatable(String jsonString)
+        private String jsonToDatatable(String filename)
 
         {
 
