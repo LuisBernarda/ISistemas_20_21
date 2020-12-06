@@ -74,6 +74,8 @@ namespace Projeto_IS
             
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
+
+            //para efeitos de testes
             jsonString = restToJSON(inPath);
 
 
