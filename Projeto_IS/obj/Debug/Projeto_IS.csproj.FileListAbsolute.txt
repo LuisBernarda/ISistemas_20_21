@@ -92,3 +92,7 @@ H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\
 H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\RestSharp.dll
 H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\bin\Debug\RestSharp.xml
 H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.outREST.resources
+C:\IS\ISistemas_20_21\Projeto_IS\bin\Debug\RestSharp.dll
+C:\IS\ISistemas_20_21\Projeto_IS\bin\Debug\RestSharp.xml
+C:\IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.inXML.resources
+C:\IS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.outREST.resources
