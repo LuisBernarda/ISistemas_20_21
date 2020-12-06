@@ -48,22 +48,6 @@ namespace Projeto_IS
         {
             outputHTML(jsonString);
 
-            string filename = "";
-            //string json = "";
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                filename = openFileDialog1.FileName;
-                MessageBox.Show(jsonString);
-                DataTable dtTable = new DataTable();
-                dtTable = convertStringToDataTable(jsonString);
-                ExportDatatableToHtml(dtTable);
-            }
-
         }
 
         private void inREST_Click(object sender, EventArgs e)
