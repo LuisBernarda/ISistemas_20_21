@@ -41,7 +41,7 @@ namespace Projeto_IS
             InitializeComponent();
         }
 
-        private void outHTML_Click(object sender, EventArgs e,String json)
+        private void outHTML_Click(object sender, EventArgs e)
         {
 
             Console.WriteLine(inRestURI);
@@ -88,7 +88,7 @@ namespace Projeto_IS
             {
                 filename = openFileDialog1.FileName;
                 MessageBox.Show(filename);
-                jason= excelToJSON(filename);
+                jsonString= excelToJSON(filename);
 
             }
 
