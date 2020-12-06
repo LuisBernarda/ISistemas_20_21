@@ -23,8 +23,9 @@ namespace Projeto_IS
 {
     public partial class Main : Form
     {
-        public string inRESTuriAux;
-        public string outRestMethod;
+        public string inRestURI;
+        public string inMethod;
+        public string outMethod;
         public string outRestURI;
 
         public Main()
@@ -34,7 +35,7 @@ namespace Projeto_IS
 
         private void outHTML_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(inRESTuriAux);
+            Console.WriteLine(inRestURI);
         }
 
         private void inREST_Click(object sender, EventArgs e)
@@ -156,10 +157,23 @@ namespace Projeto_IS
 
             foreach (var aux in listaFluxos.Items)
             {
-                createFlow(doc, aux.ToString());
+                root.AppendChild(createFlow(doc, aux.ToString()));                
             }
 
-
+            SaveFileDialog exportXml = new SaveFileDialog();
+            //exportXml.ShowDialog();
+            exportXml.Filter = "xml files (*.xml)|*.xml";
+            exportXml.Title = "Guardar os Fluxos de dados!";
+            if (exportXml.ShowDialog() == DialogResult.OK)
+            {
+                doc.Save(exportXml.FileName);
+                MessageBox.Show("Sucesso!");
+                
+            } else
+            {
+                MessageBox.Show("Erro! Ocorreu um erro a gravar o ficheiro ");
+            }
+           
         }
 
         private XmlElement createFlow(XmlDocument doc, string flowAux)
@@ -175,6 +189,13 @@ namespace Projeto_IS
             flow.SetAttribute("outputPath", splitOut[1].Trim());
 
             return flow;
+        }
+
+        private void createFlowString(string inType, string inPath, string outType, string outPath)
+        {
+            string aux = inType + " > " + inPath + " : " + outType + " > " + outPath;
+
+            listaFluxos.Items.Add(aux);
         }
     }
 
