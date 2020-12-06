@@ -36,7 +36,6 @@ namespace Projeto_IS
         public String jsonString;
         public String htmlString;
         public string outPath;
-        public string jsonString;
         
 
 
@@ -240,8 +239,6 @@ namespace Projeto_IS
         }
 
         private String jsonToDatatable(String jsonString)
-        private String jsonToDatatable(String filename)
-
         {
 
             string output = "";
