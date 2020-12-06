@@ -19,15 +19,22 @@ using NPOI.XSSF.UserModel;
 using RestSharp;
 using System.Xml;
 
+using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
+
 namespace Projeto_IS
 {
     public partial class Main : Form
     {
+
         public string inRestURI;
         public string inMethod;
         public string outMethod;
         public string outRestURI;
-        public int flag;
+        public String inRESTuriAux;
+        public String outRestMethod;
+        public String jsonString;
+
 
         public Main()
         {
@@ -36,102 +43,65 @@ namespace Projeto_IS
 
         private void outHTML_Click(object sender, EventArgs e)
         {
+
             Console.WriteLine(inRestURI);
+
+            Console.WriteLine(inRESTuriAux);
+            string filename = "";
+            string jason = "";
+
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filename = openFileDialog1.FileName;
+                MessageBox.Show(jsonString);
+                DataTable dtTable = new DataTable();
+                dtTable = convertStringToDataTable(jsonString);
+                ExportDatatableToHtml(dtTable);
+            }
+
         }
 
         private void inREST_Click(object sender, EventArgs e)
         {
             //passar a form main para a nova form de modo a poder alterar a variavel inRESTuriAux dentro da form nova
             //por enquanto funciona, se der tempo, utilizaçao de interfaces seria uma melhor soluçao
-            flag = 0;
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
-            flag = 1;
         }
 
         private void inEXCEL_Click(object sender, EventArgs e)
         {
-            flag = 0;
             string filename = "";
-            string output = "";
+            string jason = "";
+
+
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
-            flag = 3;
-
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 filename = openFileDialog1.FileName;
-                output = $"{filename}.txt";
                 MessageBox.Show(filename);
-
-
-
-                DataTable dtTable = new DataTable();
-                List<string> rowList = new List<string>();
-                ISheet sheet;
-                using (var stream = new FileStream(filename, FileMode.Open))
-                {
-                    stream.Position = 0;
-                    XSSFWorkbook xssWorkbook = new XSSFWorkbook(stream);
-                    sheet = xssWorkbook.GetSheetAt(0);
-                    IRow headerRow = sheet.GetRow(0);
-                    int cellCount = headerRow.LastCellNum;
-                    for (int j = 0; j < cellCount; j++)
-                    {
-                        ICell cell = headerRow.GetCell(j);
-                        if (cell == null || string.IsNullOrWhiteSpace(cell.ToString())) continue;
-                        {
-                            dtTable.Columns.Add(cell.ToString());
-                        }
-                    }
-                    for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum-1; i++)
-                    {
-                        IRow row = sheet.GetRow(i);
-                        if (row == null) continue;
-                        if (row.Cells.All(d => d.CellType == CellType.Blank)) continue;
-                        for (int j = row.FirstCellNum; j < cellCount; j++)
-                        {
-                            if (row.GetCell(j) != null)
-                            {
-                                if (!string.IsNullOrEmpty(row.GetCell(j).ToString()) && !string.IsNullOrWhiteSpace(row.GetCell(j).ToString()))
-                                {
-                                    rowList.Add(row.GetCell(j).ToString());
-                                }
-                            }
-                        }
-                        if (rowList.Count > 0)
-                            dtTable.Rows.Add(rowList.ToArray());
-                        rowList.Clear();
-                    }
-                }
-                MessageBox.Show(JsonConvert.SerializeObject(dtTable));
-                using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
-                {
-                    StreamWriter write = new StreamWriter(fs);
-                    write.Write(JsonConvert.SerializeObject(dtTable));
-                    write.Flush();
-                    write.Close();
-                    fs.Close();
-                }
-
-                
-            }
-
+                jsonString = excelToJSON(filename);
 
             }
+
+
+
+        }
         private void inXML_Click(object sender, EventArgs e)
         {
-            flag = 0;
-
             inXML formXML = new inXML(this);
             formXML.ShowDialog();
-
-            flag = 2;
         }
 
-        private string restToJSON(string uriAux)
+        private String restToJSON(String uriAux)
         {
             var client = new RestClient(uriAux);
             var request = new RestRequest(Method.GET);
@@ -142,11 +112,239 @@ namespace Projeto_IS
             return json;
         }
 
+        private String excelToJSON(String filename)
+        {
+            string jsonString = "";
+            string output = "";
+
+            output = $"{filename}.txt";
+
+
+            DataTable dtTable = new DataTable();
+            List<string> rowList = new List<string>();
+            ISheet sheet;
+            using (var stream = new FileStream(filename, FileMode.Open))
+            {
+                stream.Position = 0;
+                XSSFWorkbook xssWorkbook = new XSSFWorkbook(stream);
+                sheet = xssWorkbook.GetSheetAt(0);
+                IRow headerRow = sheet.GetRow(0);
+                int cellCount = headerRow.LastCellNum;
+                for (int j = 0; j < cellCount; j++)
+                {
+                    ICell cell = headerRow.GetCell(j);
+                    if (cell == null || string.IsNullOrWhiteSpace(cell.ToString())) continue;
+                    {
+                        dtTable.Columns.Add(cell.ToString());
+                    }
+                }
+                for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum - 1; i++)
+                {
+                    IRow row = sheet.GetRow(i);
+                    if (row == null) continue;
+                    if (row.Cells.All(d => d.CellType == CellType.Blank)) continue;
+                    for (int j = row.FirstCellNum; j < cellCount; j++)
+                    {
+                        if (row.GetCell(j) != null)
+                        {
+                            if (!string.IsNullOrEmpty(row.GetCell(j).ToString()) && !string.IsNullOrWhiteSpace(row.GetCell(j).ToString()))
+                            {
+                                rowList.Add(row.GetCell(j).ToString());
+                            }
+                        }
+                    }
+                    if (rowList.Count > 0)
+                        dtTable.Rows.Add(rowList.ToArray());
+                    rowList.Clear();
+                }
+            }
+            jsonString = JsonConvert.SerializeObject(dtTable);
+            MessageBox.Show(jsonString);
+            using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
+            {
+                StreamWriter write = new StreamWriter(fs);
+                write.Write(JsonConvert.SerializeObject(dtTable));
+                write.Flush();
+                write.Close();
+                fs.Close();
+            }
+
+            ExportDatatableToHtml(dtTable);
+
+
+            return jsonString;
+        }
+
         private void outREST_Click(object sender, EventArgs e)
         {
             outREST formOutREST = new outREST(this);
             formOutREST.ShowDialog();
-            flag += 10;
+        }
+        protected string ExportDatatableToHtml(DataTable dt)
+        {
+            StringBuilder strHTMLBuilder = new StringBuilder();
+            strHTMLBuilder.Append("<html>");
+            strHTMLBuilder.Append("<head>");
+            strHTMLBuilder.Append("</head>");
+            strHTMLBuilder.Append("<body>");
+            strHTMLBuilder.Append("<table border='1px' cellpadding='1' cellspacing='1' bgcolor='lightyellow' style='font-family:Garamond; font-size:smaller'>");
+
+            strHTMLBuilder.Append("<tr >");
+            foreach (DataColumn myColumn in dt.Columns)
+            {
+                strHTMLBuilder.Append("<td>");
+                strHTMLBuilder.Append(myColumn.ColumnName);
+                strHTMLBuilder.Append("</td>");
+
+            }
+            strHTMLBuilder.Append("</tr>");
+
+
+            foreach (DataRow myRow in dt.Rows)
+            {
+
+                strHTMLBuilder.Append("<tr>");
+                foreach (DataColumn myColumn in dt.Columns)
+                {
+                    strHTMLBuilder.Append("<td >");
+                    strHTMLBuilder.Append(myRow[myColumn.ColumnName].ToString());
+                    strHTMLBuilder.Append("</td>");
+
+                }
+                strHTMLBuilder.Append("</tr>");
+            }
+
+            //Close tags.  
+            strHTMLBuilder.Append("</table>");
+            strHTMLBuilder.Append("</body>");
+            strHTMLBuilder.Append("</html>");
+
+            string Htmltext = strHTMLBuilder.ToString();
+            MessageBox.Show(Htmltext);
+            return Htmltext;
+
+        }
+
+
+        //private string restToJSON(string uriAux)
+
+        private String jsonToDatatable(String filename)
+
+        {
+
+            string output = "";
+
+            output = $"{filename}.txt";
+
+
+            DataTable dtTable = new DataTable();
+            List<string> rowList = new List<string>();
+            ISheet sheet;
+            using (var stream = new FileStream(filename, FileMode.Open))
+            {
+                stream.Position = 0;
+                XSSFWorkbook xssWorkbook = new XSSFWorkbook(stream);
+                sheet = xssWorkbook.GetSheetAt(0);
+                IRow headerRow = sheet.GetRow(0);
+                int cellCount = headerRow.LastCellNum;
+                for (int j = 0; j < cellCount; j++)
+                {
+                    ICell cell = headerRow.GetCell(j);
+                    if (cell == null || string.IsNullOrWhiteSpace(cell.ToString())) continue;
+                    {
+                        dtTable.Columns.Add(cell.ToString());
+                    }
+                }
+                for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum - 1; i++)
+                {
+                    IRow row = sheet.GetRow(i);
+                    if (row == null) continue;
+                    if (row.Cells.All(d => d.CellType == CellType.Blank)) continue;
+                    for (int j = row.FirstCellNum; j < cellCount; j++)
+                    {
+                        if (row.GetCell(j) != null)
+                        {
+                            if (!string.IsNullOrEmpty(row.GetCell(j).ToString()) && !string.IsNullOrWhiteSpace(row.GetCell(j).ToString()))
+                            {
+                                rowList.Add(row.GetCell(j).ToString());
+                            }
+                        }
+                    }
+                    if (rowList.Count > 0)
+                        dtTable.Rows.Add(rowList.ToArray());
+                    rowList.Clear();
+                }
+            }
+            jsonString = JsonConvert.SerializeObject(dtTable);
+            MessageBox.Show(jsonString);
+            using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
+            {
+                StreamWriter write = new StreamWriter(fs);
+                write.Write(JsonConvert.SerializeObject(dtTable));
+                write.Flush();
+                write.Close();
+                fs.Close();
+            }
+
+            ExportDatatableToHtml(dtTable);
+
+            return jsonString;
+        }
+
+        public static DataTable convertStringToDataTable(string jsonString)
+        {
+
+            DataTable dt = new DataTable();
+            string[] jsonStringArray = Regex.Split(jsonString.Replace("[", "").Replace("]", ""), "},{");
+            List<string> ColumnsName = new List<string>();
+            foreach (string jSA in jsonStringArray)
+            {
+                string[] jsonStringData = Regex.Split(jSA.Replace("{", "").Replace("}", ""), ",");
+                foreach (string ColumnsNameData in jsonStringData)
+                {
+                    try
+                    {
+                        int idx = ColumnsNameData.IndexOf(":");
+                        string ColumnsNameString = ColumnsNameData.Substring(0, idx - 1).Replace("\"", "");
+                        if (!ColumnsName.Contains(ColumnsNameString))
+                        {
+                            ColumnsName.Add(ColumnsNameString);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(string.Format("Error Parsing Column Name : {0}", ColumnsNameData));
+                    }
+                }
+                break;
+            }
+            foreach (string AddColumnName in ColumnsName)
+            {
+                dt.Columns.Add(AddColumnName);
+            }
+            foreach (string jSA in jsonStringArray)
+            {
+                string[] RowData = Regex.Split(jSA.Replace("{", "").Replace("}", ""), ",");
+                DataRow nr = dt.NewRow();
+                foreach (string rowData in RowData)
+                {
+                    try
+                    {
+                        int idx = rowData.IndexOf(":");
+                        string RowColumns = rowData.Substring(0, idx - 1).Replace("\"", "");
+                        string RowDataString = rowData.Substring(idx + 1).Replace("\"", "");
+                        nr[RowColumns] = RowDataString;
+                    }
+                    catch (Exception ex)
+                    {
+                        continue;
+                    }
+                }
+                dt.Rows.Add(nr);
+            }
+            return dt;
+
+
         }
 
         private void export_Click(object sender, EventArgs e)
@@ -156,7 +354,7 @@ namespace Projeto_IS
                 MessageBox.Show("Erro! Não existem fluxos para guardar!");
                 return;
             }
-            
+
             XmlDocument doc = new XmlDocument();
 
             // Create the XML Declaration, and append it to XML document
@@ -168,22 +366,24 @@ namespace Projeto_IS
 
             foreach (var aux in listaFluxos.Items)
             {
-                root.AppendChild(createFlow(doc, aux.ToString()));                
+                root.AppendChild(createFlow(doc, aux.ToString()));
             }
 
             SaveFileDialog exportXml = new SaveFileDialog();
+            //exportXml.ShowDialog();
             exportXml.Filter = "xml files (*.xml)|*.xml";
             exportXml.Title = "Guardar os Fluxos de dados!";
             if (exportXml.ShowDialog() == DialogResult.OK)
             {
                 doc.Save(exportXml.FileName);
                 MessageBox.Show("Sucesso!");
-                
-            } else
+
+            }
+            else
             {
                 MessageBox.Show("Erro! Ocorreu um erro a gravar o ficheiro ");
             }
-           
+
         }
 
         private XmlElement createFlow(XmlDocument doc, string flowAux)
@@ -210,19 +410,11 @@ namespace Projeto_IS
 
         private void executar_Click(object sender, EventArgs e)
         {
-            /*
-            foreach (var tretas in listaFluxos.Items)
-            {
-                string[] splitHalf = tretas.ToString().Split(':');
-                string[] splitIn = splitHalf[0].Split('>');
-                string[] splitOut = splitHalf[1].Split('>');
 
-             }
-            */
         }
     }
 
 }
 
 
-        
+
