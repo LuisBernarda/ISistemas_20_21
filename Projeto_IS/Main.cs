@@ -27,6 +27,7 @@ namespace Projeto_IS
         public string inMethod;
         public string outMethod;
         public string outRestURI;
+        public int flag;
 
         public Main()
         {
@@ -42,19 +43,22 @@ namespace Projeto_IS
         {
             //passar a form main para a nova form de modo a poder alterar a variavel inRESTuriAux dentro da form nova
             //por enquanto funciona, se der tempo, utilizaçao de interfaces seria uma melhor soluçao
+            flag = 0;
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
+            flag = 1;
         }
 
         private void inEXCEL_Click(object sender, EventArgs e)
         {
+            flag = 0;
             string filename = "";
             string output = "";
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
-            
-            
+            flag = 3;
+
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -111,14 +115,20 @@ namespace Projeto_IS
                     write.Close();
                     fs.Close();
                 }
+
+                
             }
 
 
             }
         private void inXML_Click(object sender, EventArgs e)
         {
+            flag = 0;
+
             inXML formXML = new inXML(this);
             formXML.ShowDialog();
+
+            flag = 2;
         }
 
         private string restToJSON(string uriAux)
@@ -136,6 +146,7 @@ namespace Projeto_IS
         {
             outREST formOutREST = new outREST(this);
             formOutREST.ShowDialog();
+            flag += 10;
         }
 
         private void export_Click(object sender, EventArgs e)
@@ -161,7 +172,6 @@ namespace Projeto_IS
             }
 
             SaveFileDialog exportXml = new SaveFileDialog();
-            //exportXml.ShowDialog();
             exportXml.Filter = "xml files (*.xml)|*.xml";
             exportXml.Title = "Guardar os Fluxos de dados!";
             if (exportXml.ShowDialog() == DialogResult.OK)
@@ -196,6 +206,19 @@ namespace Projeto_IS
             string aux = inType + " > " + inPath + " : " + outType + " > " + outPath;
 
             listaFluxos.Items.Add(aux);
+        }
+
+        private void executar_Click(object sender, EventArgs e)
+        {
+            /*
+            foreach (var tretas in listaFluxos.Items)
+            {
+                string[] splitHalf = tretas.ToString().Split(':');
+                string[] splitIn = splitHalf[0].Split('>');
+                string[] splitOut = splitHalf[1].Split('>');
+
+             }
+            */
         }
     }
 

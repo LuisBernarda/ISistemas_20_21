@@ -182,6 +182,7 @@ namespace Projeto_IS
             this.executar.TabIndex = 6;
             this.executar.Text = "Correr fluxos";
             this.executar.UseVisualStyleBackColor = true;
+            this.executar.Click += new System.EventHandler(this.executar_Click);
             // 
             // openFileDialog1
             // 
