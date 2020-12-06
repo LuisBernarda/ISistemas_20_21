@@ -46,7 +46,9 @@ namespace Projeto_IS
 
         private void outHTML_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Escolha a pasta para gravar!!!!");
             outputHTML(jsonString);
+           
 
         }
 
@@ -62,6 +64,7 @@ namespace Projeto_IS
 
         private void inEXCEL_Click(object sender, EventArgs e)
         {
+
                       
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
@@ -73,7 +76,7 @@ namespace Projeto_IS
                 MessageBox.Show(inPath);
 
                 //este ultimo so vai ser invocado no correr fluxos
-                //jsonString = excelToJSON(filename);
+                jsonString = excelToJSON(inPath);
 
             }
 
@@ -154,7 +157,7 @@ namespace Projeto_IS
                 fs.Close();
             }
 
-            ExportDatatableToHtml(dtTable);
+           // ExportDatatableToHtml(dtTable); para debug e testes
 
 
             return jsonString;
@@ -213,11 +216,32 @@ namespace Projeto_IS
 
         private string outputHTML(string strJason)
         {
+            var folderBrowserDialog1 = new FolderBrowserDialog();
+
+            // Show the FolderBrowserDialog.
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string folderName = folderBrowserDialog1.SelectedPath;
+                MessageBox.Show(inPath);
+                string path = $@"{folderName}\Output.html";
+                if (!File.Exists(path))
+                {
+                    // criar o ficheiro para escrever 
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(htmlString);
+                    }
+                }
+            }
             MessageBox.Show(strJason);
             DataTable dtTable = new DataTable();
             dtTable = convertStringToDataTable(jsonString);
             htmlString = ExportDatatableToHtml(dtTable);
-            MessageBox.Show(htmlString);
+            
+
+           
+    
 
             return htmlString;
         }
