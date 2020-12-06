@@ -34,6 +34,7 @@ namespace Projeto_IS
         public String inRESTuriAux;
         public String outRestMethod;
         public String jsonString;
+        public String htmlString;
 
 
         public Main()
@@ -43,27 +44,7 @@ namespace Projeto_IS
 
         private void outHTML_Click(object sender, EventArgs e)
         {
-
-            Console.WriteLine(inRestURI);
-
-            Console.WriteLine(inRESTuriAux);
-            string filename = "";
-            string jason = "";
-
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                filename = openFileDialog1.FileName;
-                MessageBox.Show(jsonString);
-                DataTable dtTable = new DataTable();
-                dtTable = convertStringToDataTable(jsonString);
-                ExportDatatableToHtml(dtTable);
-            }
-
+            outputHTML(jsonString);
         }
 
         private void inREST_Click(object sender, EventArgs e)
@@ -92,7 +73,6 @@ namespace Projeto_IS
 
             }
 
-  
 
         }
         private void inXML_Click(object sender, EventArgs e)
@@ -226,21 +206,30 @@ namespace Projeto_IS
         }
 
 
-        //private string restToJSON(string uriAux)
+        private string outputHTML(string strJason)
+        {
+            MessageBox.Show(strJason);
+            DataTable dtTable = new DataTable();
+            dtTable = convertStringToDataTable(jsonString);
+            htmlString = ExportDatatableToHtml(dtTable);
+            MessageBox.Show(htmlString);
 
-        private String jsonToDatatable(String filename)
+            return htmlString;
+        }
+
+        private String jsonToDatatable(String jsonString)
 
         {
             
             string output = "";
 
-            output = $"{filename}.txt";
+            output = $"{jsonString}.txt";
 
 
             DataTable dtTable = new DataTable();
             List<string> rowList = new List<string>();
             ISheet sheet;
-            using (var stream = new FileStream(filename, FileMode.Open))
+            using (var stream = new FileStream(jsonString, FileMode.Open))
             {
                 stream.Position = 0;
                 XSSFWorkbook xssWorkbook = new XSSFWorkbook(stream);
@@ -406,6 +395,8 @@ namespace Projeto_IS
 
             listaFluxos.Items.Add(aux);
         }
+
+     
 
     }
 
