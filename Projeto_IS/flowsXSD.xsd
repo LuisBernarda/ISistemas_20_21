@@ -6,11 +6,11 @@
         <xs:element maxOccurs="unbounded" name="flow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="inputType" type="xs:string" />
-              <xs:element name="inputPath" type="xs:string" />
-              <xs:element name="outputType" type="xs:string" />
-              <xs:element name="outputPath" type="xs:string" />
             </xs:sequence>
+            <xs:attribute name="inputType" type="xs:string" use="required"/>
+            <xs:attribute name="inputPath" type="xs:string" use="required"/>
+            <xs:attribute name="outputType" type="xs:string" use="required"/>
+            <xs:attribute name="outputPath" type="xs:string" use="required"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>

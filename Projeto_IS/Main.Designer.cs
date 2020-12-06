@@ -51,6 +51,8 @@ namespace Projeto_IS
             this.listaFluxos.Enabled = false;
             this.listaFluxos.FormattingEnabled = true;
             this.listaFluxos.ItemHeight = 16;
+            this.listaFluxos.Items.AddRange(new object[] {
+            "GET > String : POST > String"});
             this.listaFluxos.Location = new System.Drawing.Point(299, 155);
             this.listaFluxos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listaFluxos.Name = "listaFluxos";
@@ -75,8 +77,9 @@ namespace Projeto_IS
             this.export.Name = "export";
             this.export.Size = new System.Drawing.Size(173, 37);
             this.export.TabIndex = 2;
-            this.export.Text = "Exportar fluxo";
+            this.export.Text = "Guardar fluxos";
             this.export.UseVisualStyleBackColor = true;
+            this.export.Click += new System.EventHandler(this.export_Click);
             // 
             // output
             // 

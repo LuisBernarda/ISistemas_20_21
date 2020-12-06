@@ -17,14 +17,15 @@ using System.Runtime.InteropServices;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using RestSharp;
+using System.Xml;
 
 namespace Projeto_IS
 {
     public partial class Main : Form
     {
-        public String inRESTuriAux;
-        public String outRestMethod;
-        public String outRestURI;
+        public string inRESTuriAux;
+        public string outRestMethod;
+        public string outRestURI;
 
         public Main()
         {
@@ -119,7 +120,7 @@ namespace Projeto_IS
             formXML.ShowDialog();
         }
 
-        private String restToJSON(String uriAux)
+        private string restToJSON(string uriAux)
         {
             var client = new RestClient(uriAux);
             var request = new RestRequest(Method.GET);
@@ -134,6 +135,46 @@ namespace Projeto_IS
         {
             outREST formOutREST = new outREST(this);
             formOutREST.ShowDialog();
+        }
+
+        private void export_Click(object sender, EventArgs e)
+        {
+            if (listaFluxos.Items.Count == 0)
+            {
+                MessageBox.Show("Erro! Não existem fluxos para guardar!");
+                return;
+            }
+            
+            XmlDocument doc = new XmlDocument();
+
+            // Create the XML Declaration, and append it to XML document
+            XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", null, null);
+            doc.AppendChild(dec);
+            // Create the root element
+            XmlElement root = doc.CreateElement("flows");
+            doc.AppendChild(root);
+
+            foreach (var aux in listaFluxos.Items)
+            {
+                createFlow(doc, aux.ToString());
+            }
+
+
+        }
+
+        private XmlElement createFlow(XmlDocument doc, string flowAux)
+        {
+            string[] splitHalf = flowAux.Split(':');
+            string[] splitIn = splitHalf[0].Split('>');
+            string[] splitOut = splitHalf[1].Split('>');
+
+            XmlElement flow = doc.CreateElement("flow");
+            flow.SetAttribute("inputType", splitIn[0].Trim());
+            flow.SetAttribute("inputPath", splitIn[1].Trim());
+            flow.SetAttribute("outputType", splitOut[0].Trim());
+            flow.SetAttribute("outputPath", splitOut[1].Trim());
+
+            return flow;
         }
     }
 
