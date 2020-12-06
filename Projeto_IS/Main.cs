@@ -169,7 +169,7 @@ namespace Projeto_IS
                     fs.Close();
                 }
            
-            ExportDatatableToHtml(dtTable);
+            //ExportDatatableToHtml(dtTable);
 
 
             return jsonString;
