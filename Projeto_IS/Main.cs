@@ -99,9 +99,8 @@ namespace Projeto_IS
 
             }
 
-
-
         }
+
         private void inXML_Click(object sender, EventArgs e)
         {
             //inXML formXML = new inXML(this);
@@ -114,7 +113,6 @@ namespace Projeto_IS
             {
                 string path = openFileDialog2.FileName;
                 MessageBox.Show(path);
-
 
                 inPath = path;
                 inMethod = "XML";
@@ -214,6 +212,7 @@ namespace Projeto_IS
             outREST formOutREST = new outREST(this);
             formOutREST.ShowDialog();
         }
+
         protected string ExportDatatableToHtml(DataTable dt)
         {
             StringBuilder strHTMLBuilder = new StringBuilder();
