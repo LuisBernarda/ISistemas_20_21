@@ -10,12 +10,12 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
 using System.Data.Common;
-using Newtonsoft.Json;
+using Newtonsoft.Json;  //usada para converter de datatable para json string
 using ExcelDataReader;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;  //usada para converter de excel para datatable
+using NPOI.XSSF.UserModel;  //..
 using RestSharp;
 using System.Xml;
 
@@ -60,7 +60,7 @@ namespace Projeto_IS
         private void outHTML_Click(object sender, EventArgs e)
         {
            
-            SaveFileDialog exportHtml = new SaveFileDialog();
+            SaveFileDialog exportHtml = new SaveFileDialog(); // perguntamos ao utilizador onde quer guardar o ficheiro e qual o nome a dar 
             exportHtml.Filter = "Html files (*.html)|*.html";
             exportHtml.Title = "Guardar o ficheiro HTML!";
 
@@ -104,9 +104,9 @@ namespace Projeto_IS
         {
 
                       
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();  //abrir o ficheiro
+            openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*"; //filtrar por tipo de ficheiro
+            //openFileDialog1.FilterIndex = 1;  //default
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -115,9 +115,9 @@ namespace Projeto_IS
                 inMethod = "EXCEL";
                 
                 //este ultimo so vai ser invocado no correr fluxos
-                jsonString = excelToJSON(inPath);
+                jsonString = excelToJSON(inPath);  //chama a funcao excelToJson que converte o ficheiro excel numa jsonstring
 
-                permitirOutput();
+                permitirOutput();  //para desbloquear os botoes de Output
             }
 
         }
@@ -167,8 +167,9 @@ namespace Projeto_IS
             return json;
         }
 
-        private String excelToJSON(String filename)
-        {
+        private String excelToJSON(String filename) //esta funcao serve para converter o excel que recebemos do utilizador numa string Json
+        {                                           //para isso usamos o package NPOI que e um projecto open source que nos ajuda a escrever/ler de ficheiros XLS(excel)
+                                                    //DOC (word) e  PPT (powerpoint)
             string jsonString = "";
             string output = "";
 
@@ -213,11 +214,13 @@ namespace Projeto_IS
                     rowList.Clear();
                 }
             }
-            jsonString = JsonConvert.SerializeObject(dtTable);
+            //primeiramente vamos ler os dados do nosso ficheiro para uma datatable e so depois convertemos para uma string Json atraves da  seralizacao 
+            //entre objectos neste caso entre uma datatable e um Json Object atraves da biblioteca Newtonsoft  metodo jsonConvert
+            jsonString = JsonConvert.SerializeObject(dtTable); 
             MessageBox.Show(jsonString);
             using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
             {
-                StreamWriter write = new StreamWriter(fs);
+                StreamWriter write = new StreamWriter(fs); //escrever para um ficheiro so para testes
                 write.Write(JsonConvert.SerializeObject(dtTable));
                 write.Flush();
                 write.Close();
@@ -238,7 +241,7 @@ namespace Projeto_IS
 
         protected string ExportDatatableToHtml(DataTable dt)
         {
-            StringBuilder strHTMLBuilder = new StringBuilder();
+            StringBuilder strHTMLBuilder = new StringBuilder();// criar o ficheiro html atraves das tags
             strHTMLBuilder.Append("<html>");
             strHTMLBuilder.Append("<head>");
             strHTMLBuilder.Append("</head>");
@@ -270,32 +273,32 @@ namespace Projeto_IS
                 strHTMLBuilder.Append("</tr>");
             }
 
-            //Close tags.  
+            //fechar as tags  
             strHTMLBuilder.Append("</table>");
             strHTMLBuilder.Append("</body>");
             strHTMLBuilder.Append("</html>");
 
             string Htmltext = strHTMLBuilder.ToString();
             MessageBox.Show(Htmltext);
-            return Htmltext;
+            return Htmltext;//retorna uma variavel HTMLtext que contem o nosso codigo html, sendo basicamente uma string
 
         }
 
 
-        private string outputHTML(string strJson, string nome)
+        private string outputHTML(string strJson, string caminho)
         {
             MessageBox.Show(strJson);
-            DataTable dtTable = new DataTable();
-            dtTable = convertStringToDataTable(strJson);
-            htmlString = ExportDatatableToHtml(dtTable);
+            DataTable dtTable = new DataTable(); //criar uma nova datatable
+            dtTable = convertStringToDataTable(strJson); //converter a string em datatable
+            htmlString = ExportDatatableToHtml(dtTable); //converter a datatable em conteudo html
 
             //MessageBox.Show(inPath);
-            string path = nome;
+            string path = caminho;
          
            // criar o ficheiro para escrever 
             using (StreamWriter sw = File.CreateText(path))
             {
-                        sw.WriteLine(htmlString);
+                        sw.WriteLine(htmlString);//escrever a string para criar o ficheiro html
             }
            
 
