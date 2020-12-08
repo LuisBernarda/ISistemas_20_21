@@ -42,6 +42,11 @@ namespace Projeto_IS
         public Main()
         {
             InitializeComponent();
+            //iniciar os outputs a false de modo a facilitar utilizaçao, 
+            //para efeitos de testes talvez seja melhor manter comentado
+            //mais info ver comentarios das funcçoes permitirInput() e permitirOutput()
+            //estas funcçoes estao presentes em inClickXml inClickExcel form inREST, outClickHtml e form outREST!
+            permitirInput();
         }
 
         private void outHTML_Click(object sender, EventArgs e)
@@ -53,6 +58,8 @@ namespace Projeto_IS
             {
                 outPath = Path.GetFullPath(exportHtml.FileName);
                 outputHTML(jsonString, outPath);
+                //permitir inputs, gray out outputs
+                permitirInput();
                 MessageBox.Show("Sucesso!");
 
             }
@@ -93,10 +100,11 @@ namespace Projeto_IS
             {
                 inPath = openFileDialog1.FileName;
                 MessageBox.Show(inPath);
-
+                
                 //este ultimo so vai ser invocado no correr fluxos
                 jsonString = excelToJSON(inPath);
 
+                permitirOutput();
             }
 
         }
@@ -113,11 +121,13 @@ namespace Projeto_IS
             {
                 string path = openFileDialog2.FileName;
                 MessageBox.Show(path);
-
+                
                 inPath = path;
                 inMethod = "XML";
                 jsonString = xmlToJSON(inPath);
 
+                //permitir output
+                permitirOutput();
             }
         }
 
@@ -403,6 +413,32 @@ namespace Projeto_IS
         private void executar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void permitirInput()
+        {
+            //funcao publica para poder ser chamada dentro das forms, a fim de facilitar
+            //utilizacao do programa da parte do utilizador, atraves de desabilitar os butoes de input
+            //quando o programa está a espera de um output
+
+            outHTML.Enabled = false;
+            outREST.Enabled = false;
+            inREST.Enabled = true;
+            inEXCEL.Enabled = true;
+            inXML.Enabled = true;
+        }
+
+        public void permitirOutput()
+        {
+            //funcao publica para poder ser chamada dentro das forms, a fim de facilitar
+            //utilizacao do programa da parte do utilizador, atraves de desabilitar os butoes de output
+            //quando o programa está a espera de um Input
+
+            outHTML.Enabled = true;
+            outREST.Enabled = true;
+            inREST.Enabled = false;
+            inEXCEL.Enabled = false;
+            inXML.Enabled = false;
         }
     }
 

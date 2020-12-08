@@ -43,7 +43,8 @@ namespace Projeto_IS
                     MessageBox.Show("Sucesso!");
                     //guardar na main form a uri validada
                     formAux.outPath = url.Text;
-                    formAux.outMethod = method.SelectedItem.ToString(); 
+                    formAux.outMethod = method.SelectedItem.ToString();
+                    formAux.permitirInput();
                     this.Close();
                 }
                 MessageBox.Show("Erro! URI Inválida!");
