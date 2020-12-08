@@ -24,13 +24,19 @@ namespace Projeto_IS
         {
             OpenFileDialog abrir = new OpenFileDialog();
             abrir.Filter = "xml files (*.xml)|*.xml";
-            try
+            if (abrir.ShowDialog() == DialogResult.OK)
             {
-                startupAux.HandlerXML(Path.GetFullPath(abrir.FileName));
-                this.Close();
-            } catch
+                try
+                {
+                    startupAux.HandlerXML(Path.GetFullPath(abrir.FileName));
+                    this.Close();
+                } catch
+                {
+                    MessageBox.Show("Erro a processar o ficheiro!");
+                }
+            } else
             {
-                MessageBox.Show("Erro!");
+                MessageBox.Show("Erro a abrir o ficheiro!");
             }
         }
 

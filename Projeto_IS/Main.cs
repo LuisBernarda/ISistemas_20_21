@@ -22,6 +22,8 @@ using System.Xml;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 
+
+
 namespace Projeto_IS
 {
     public partial class Main : Form
@@ -418,7 +420,43 @@ namespace Projeto_IS
 
         private void executar_Click(object sender, EventArgs e)
         {
+            if (listaFluxos.Items.Count == 0)
+            {
+                MessageBox.Show("Erro! Não existem fluxos a serem processados!");
+                return;
+            }
 
+            foreach (string fluxo in listaFluxos.Items)
+            {
+                string[] splitHalf = fluxo.Split(':');
+                string[] splitIn = splitHalf[0].Split('>');
+                string[] splitOut = splitHalf[1].Split('>');
+
+                string aux = splitIn[0].Trim() + splitOut[0].Trim();
+
+                switch (aux)
+                {
+                    case "GETPOST":
+                        MessageBox.Show("sucesso!");
+                        break;
+                    case "GETPUT":
+                        break;
+                    case "GETHTML":
+                        break;
+                    case "XMLPOST":
+                        break;
+                    case "XMLPUT":
+                        break;
+                    case "XMLHTML":
+                        break;
+                    case "EXCELPOST":
+                        break;
+                    case "EXCELPUT":
+                        break;
+                    case "EXCELHTML":
+                        break;
+                }
+            }
         }
 
         public void permitirInput()
