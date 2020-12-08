@@ -43,6 +43,7 @@ namespace Projeto_IS
             this.executar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.output.SuspendLayout();
             this.INPUT.SuspendLayout();
             this.SuspendLayout();
@@ -52,8 +53,6 @@ namespace Projeto_IS
             this.listaFluxos.Enabled = false;
             this.listaFluxos.FormattingEnabled = true;
             this.listaFluxos.ItemHeight = 16;
-            this.listaFluxos.Items.AddRange(new object[] {
-            "GET > String : POST > String"});
             this.listaFluxos.Location = new System.Drawing.Point(299, 155);
             this.listaFluxos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listaFluxos.Name = "listaFluxos";
@@ -63,20 +62,21 @@ namespace Projeto_IS
             // 
             // import
             // 
-            this.import.Location = new System.Drawing.Point(299, 449);
+            this.import.Location = new System.Drawing.Point(501, 449);
             this.import.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.import.Name = "import";
-            this.import.Size = new System.Drawing.Size(173, 37);
+            this.import.Size = new System.Drawing.Size(139, 37);
             this.import.TabIndex = 1;
-            this.import.Text = "Importar fluxo";
+            this.import.Text = "Abrir Fluxos";
             this.import.UseVisualStyleBackColor = true;
+            this.import.Click += new System.EventHandler(this.import_Click);
             // 
             // export
             // 
-            this.export.Location = new System.Drawing.Point(675, 449);
+            this.export.Location = new System.Drawing.Point(709, 449);
             this.export.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.export.Name = "export";
-            this.export.Size = new System.Drawing.Size(173, 37);
+            this.export.Size = new System.Drawing.Size(139, 37);
             this.export.TabIndex = 2;
             this.export.Text = "Guardar fluxos";
             this.export.UseVisualStyleBackColor = true;
@@ -193,11 +193,22 @@ namespace Projeto_IS
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(299, 449);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(139, 37);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Eliminar Fluxos";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 647);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.executar);
             this.Controls.Add(this.projetoIS);
             this.Controls.Add(this.INPUT);
@@ -231,6 +242,7 @@ namespace Projeto_IS
         private System.Windows.Forms.Button executar;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

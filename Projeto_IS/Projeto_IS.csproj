@@ -75,6 +75,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="startup_import.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="startup_import.Designer.cs">
+      <DependentUpon>startup_import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HandlerXML.cs" />
     <Compile Include="outREST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +120,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="startup_import.resx">
+      <DependentUpon>startup_import.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

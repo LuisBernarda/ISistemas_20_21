@@ -111,3 +111,4 @@ C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\bin\Debug\Res
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.ResolveComReference.cache
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.outREST.resources
 C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.CopyComplete
+H:\Dropbox\Dropbox\Escola_EI\Integração de Sistemas\projeto_is\Projeto_IS\obj\Debug\Projeto_IS.startup_import.resources

@@ -36,7 +36,9 @@ namespace Projeto_IS
         public String jsonString;
         public String htmlString;
         public string outPath;
-        
+
+        //nao esta a funcionar - tenho que ver como posso obter um caminho de forma dinamica para este ficheiro sem grandes chatices, isto aponta sempre para o executavel.
+        public string xsd = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName  + "\\flowsXSD.xsd";
 
 
         public Main()
@@ -47,6 +49,10 @@ namespace Projeto_IS
             //mais info ver comentarios das funcçoes permitirInput() e permitirOutput()
             //estas funcçoes estao presentes em inClickXml inClickExcel form inREST, outClickHtml e form outREST!
             permitirInput();
+            // Abrir uma janela no startup a perguntar se o utilizador deseja carregar configuraçoes de fluxo previamente feitas
+            //
+            startup_import init = new startup_import(this);
+            init.ShowDialog();
         }
 
         private void outHTML_Click(object sender, EventArgs e)
@@ -439,6 +445,49 @@ namespace Projeto_IS
             inREST.Enabled = false;
             inEXCEL.Enabled = false;
             inXML.Enabled = false;
+        }
+
+        public void import_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog importXml = new OpenFileDialog();
+            importXml.Filter = "xml files (*.xml)|*.xml";
+            if (importXml.ShowDialog() == DialogResult.OK)
+            {
+
+                HandlerXML(Path.GetFullPath(importXml.FileName));
+            }
+            else
+            {
+                MessageBox.Show("Erro! Ocorreu um erro a abrir o ficheiro ");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listaFluxos.Items.Clear();
+        }
+
+        public void HandlerXML(string path)
+        {
+            HandlerXML handler = new HandlerXML(path, xsd);
+            if (handler.ValidateXML())
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(path);
+                foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+                {
+                    string inType = node.Attributes["inputType"]?.InnerText;
+                    string inPath = node.Attributes["inputPath"]?.InnerText;
+                    string outType = node.Attributes["outputType"]?.InnerText;
+                    string outPath = node.Attributes["outputPath"]?.InnerText;
+                    createFlowString(inType, inPath, outType, outPath);
+                }
+                MessageBox.Show("Sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Ocorreu um erro ao abrir o ficheiro de fluxos!");
+            }
         }
     }
 
