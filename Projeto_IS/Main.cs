@@ -71,6 +71,7 @@ namespace Projeto_IS
                 //permitir inputs, gray out outputs
                 permitirInput();
                 MessageBox.Show("Sucesso!");
+                createFlowString(inMethod, inPath, outMethod, outPath);
 
             }
             else
@@ -78,7 +79,7 @@ namespace Projeto_IS
                 MessageBox.Show("Erro! Ocorreu um erro a gravar o ficheiro ");
             }
 
-            createFlowString(inMethod, inPath, outMethod, outPath);
+          
 
 
 
