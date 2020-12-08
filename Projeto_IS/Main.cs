@@ -39,7 +39,7 @@ namespace Projeto_IS
         public String htmlString;
         public string outPath;
 
-        //nao esta a funcionar - tenho que ver como posso obter um caminho de forma dinamica para este ficheiro sem grandes chatices, isto aponta sempre para o executavel.
+        //ja esta a funcionar, mas n garanto que quando isto for corrido em maquinas que nao as nossas funcione, quinta tenho que ver maneira melhor de fazer isto
         public string xsd = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName  + "\\flowsXSD.xsd";
 
 
