@@ -459,7 +459,7 @@ namespace Projeto_IS
                     case "EXCELPUT":
                         break;
                     case "EXCELHTML":
-                        outputHTML(excelToJSON(splitIn[1].Trim()), splitOut[1].Trim());
+                        outputHTML(excelToJSON(splitIn[1].Trim()), splitOut[1].Trim());  // para chamar os fluxos recursivamente
                         break;
                 }
             }
