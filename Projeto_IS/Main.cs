@@ -67,6 +67,7 @@ namespace Projeto_IS
             if (exportHtml.ShowDialog() == DialogResult.OK)
             {
                 outPath = Path.GetFullPath(exportHtml.FileName);
+                outMethod = "HTML";
                 outputHTML(jsonString, outPath);
                 //permitir inputs, gray out outputs
                 permitirInput();
@@ -111,6 +112,7 @@ namespace Projeto_IS
             {
                 inPath = openFileDialog1.FileName;
                 MessageBox.Show(inPath);
+                inMethod = "EXCEL";
                 
                 //este ultimo so vai ser invocado no correr fluxos
                 jsonString = excelToJSON(inPath);
@@ -222,9 +224,9 @@ namespace Projeto_IS
                 fs.Close();
             }
 
-           // ExportDatatableToHtml(dtTable); para debug e testes
+            // ExportDatatableToHtml(dtTable); para debug e testes
 
-
+            MessageBox.Show(jsonString);
             return jsonString;
         }
 
@@ -280,11 +282,11 @@ namespace Projeto_IS
         }
 
 
-        private string outputHTML(string strJason, string nome)
+        private string outputHTML(string strJson, string nome)
         {
-            MessageBox.Show(strJason);
+            MessageBox.Show(strJson);
             DataTable dtTable = new DataTable();
-            dtTable = convertStringToDataTable(jsonString);
+            dtTable = convertStringToDataTable(strJson);
             htmlString = ExportDatatableToHtml(dtTable);
 
             //MessageBox.Show(inPath);
@@ -399,7 +401,7 @@ namespace Projeto_IS
 
         private XmlElement createFlow(XmlDocument doc, string flowAux)
         {
-            string[] splitHalf = flowAux.Split(':');
+            string[] splitHalf = flowAux.Split('*');
             string[] splitIn = splitHalf[0].Split('>');
             string[] splitOut = splitHalf[1].Split('>');
 
@@ -414,7 +416,7 @@ namespace Projeto_IS
 
         private void createFlowString(string inType, string inPath, string outType, string outPath)
         {
-            string aux = inType + " > " + inPath + " : " + outType + " > " + outPath;
+            string aux = inType + " > " + inPath + " * " + outType + " > " + outPath;
 
             listaFluxos.Items.Add(aux);
         }
@@ -431,7 +433,7 @@ namespace Projeto_IS
 
             foreach (string fluxo in listaFluxos.Items)
             {
-                string[] splitHalf = fluxo.Split(':');
+                string[] splitHalf = fluxo.Split('*');
                 string[] splitIn = splitHalf[0].Split('>');
                 string[] splitOut = splitHalf[1].Split('>');
 
@@ -457,6 +459,7 @@ namespace Projeto_IS
                     case "EXCELPUT":
                         break;
                     case "EXCELHTML":
+                        outputHTML(excelToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                 }
             }
