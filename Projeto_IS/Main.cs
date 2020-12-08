@@ -61,6 +61,8 @@ namespace Projeto_IS
         {
            
             SaveFileDialog exportHtml = new SaveFileDialog();
+            exportHtml.Filter = "Html files (*.html)|*.html";
+            exportHtml.Title = "Guardar o ficheiro HTML!";
 
             if (exportHtml.ShowDialog() == DialogResult.OK)
             {
