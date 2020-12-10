@@ -21,8 +21,7 @@ using System.Xml;
 
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
-
-
+using System.Net.Http;
 
 namespace Projeto_IS
 {
@@ -40,7 +39,7 @@ namespace Projeto_IS
         public string outPath;
 
         //ja esta a funcionar, mas n garanto que quando isto for corrido em maquinas que nao as nossas funcione, quinta tenho que ver maneira melhor de fazer isto
-        public string xsd = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName  + "\\flowsXSD.xsd";
+        public string xsd = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\flowsXSD.xsd";
 
 
         public Main()
@@ -59,7 +58,7 @@ namespace Projeto_IS
 
         private void outHTML_Click(object sender, EventArgs e)
         {
-           
+
             SaveFileDialog exportHtml = new SaveFileDialog(); // perguntamos ao utilizador onde quer guardar o ficheiro e qual o nome a dar 
             exportHtml.Filter = "Html files (*.html)|*.html";
             exportHtml.Title = "Guardar o ficheiro HTML!";
@@ -80,7 +79,7 @@ namespace Projeto_IS
                 MessageBox.Show("Erro! Ocorreu um erro a gravar o ficheiro ");
             }
 
-          
+
 
 
 
@@ -90,7 +89,7 @@ namespace Projeto_IS
         {
             //passar a form main para a nova form de modo a poder alterar a variavel inRESTuriAux dentro da form nova
             //por enquanto funciona, se der tempo, utilizaçao de interfaces seria uma melhor soluçao
-            
+
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
 
@@ -103,7 +102,7 @@ namespace Projeto_IS
         private void inEXCEL_Click(object sender, EventArgs e)
         {
 
-                      
+
             OpenFileDialog openFileDialog1 = new OpenFileDialog();  //abrir o ficheiro
             openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*"; //filtrar por tipo de ficheiro
             //openFileDialog1.FilterIndex = 1;  //default
@@ -113,7 +112,7 @@ namespace Projeto_IS
                 inPath = openFileDialog1.FileName;
                 MessageBox.Show(inPath);
                 inMethod = "EXCEL";
-                
+
                 //este ultimo so vai ser invocado no correr fluxos
                 jsonString = excelToJSON(inPath);  //chama a funcao excelToJson que converte o ficheiro excel numa jsonstring
 
@@ -134,7 +133,7 @@ namespace Projeto_IS
             {
                 string path = openFileDialog2.FileName;
                 MessageBox.Show(path);
-                
+
                 inPath = path;
                 inMethod = "XML";
                 jsonString = xmlToJSON(inPath);
@@ -216,7 +215,7 @@ namespace Projeto_IS
             }
             //primeiramente vamos ler os dados do nosso ficheiro para uma datatable e so depois convertemos para uma string Json atraves da  seralizacao 
             //entre objectos neste caso entre uma datatable e um Json Object atraves da biblioteca Newtonsoft  metodo jsonConvert
-            jsonString = JsonConvert.SerializeObject(dtTable); 
+            jsonString = JsonConvert.SerializeObject(dtTable);
             MessageBox.Show(jsonString);
             using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
             {
@@ -294,18 +293,18 @@ namespace Projeto_IS
 
             //MessageBox.Show(inPath);
             string path = caminho;
-         
-           // criar o ficheiro para escrever 
+
+            // criar o ficheiro para escrever 
             using (StreamWriter sw = File.CreateText(path))
             {
-                        sw.WriteLine(htmlString);//escrever a string para criar o ficheiro html
+                sw.WriteLine(htmlString);//escrever a string para criar o ficheiro html
             }
-           
+
 
             return htmlString;
         }
 
-        
+
 
         public static DataTable convertStringToDataTable(string jsonString)
         {
@@ -424,9 +423,9 @@ namespace Projeto_IS
             listaFluxos.Items.Add(aux);
         }
 
-     
 
-        private void executar_Click(object sender, EventArgs e)
+
+        private async void executar_Click(object sender, EventArgs e)
         {
             if (listaFluxos.Items.Count == 0)
             {
@@ -445,21 +444,27 @@ namespace Projeto_IS
                 switch (aux)
                 {
                     case "GETPOST":
-                        MessageBox.Show("sucesso!");
+                        await PostAsync(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
+                        /*MessageBox.Show("sucesso!");*/
                         break;
                     case "GETPUT":
+                        await PutAsync(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "GETHTML":
                         break;
                     case "XMLPOST":
+                        await PostAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "XMLPUT":
+                        await PutAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "XMLHTML":
                         break;
                     case "EXCELPOST":
+                        await PostAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
                         break;
                     case "EXCELPUT":
+                        await PutAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
                         break;
                     case "EXCELHTML":
                         outputHTML(excelToJSON(splitIn[1].Trim()), splitOut[1].Trim());  // para chamar os fluxos recursivamente
@@ -536,6 +541,32 @@ namespace Projeto_IS
                 MessageBox.Show("Ocorreu um erro ao abrir o ficheiro de fluxos!");
             }
         }
+
+
+        public static async Task PostAsync(string json, string url)
+        {
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            /*var response =*/
+            await client.PostAsync(url, data);
+
+            /*string result = response.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(result);*/
+        }
+
+        public static async Task PutAsync(string json, string url)
+        {
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            /*var response =*/
+            await client.PutAsync(url, data);
+
+            /*string result = response.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(result);*/
+        }
+
+
+
     }
 
 }

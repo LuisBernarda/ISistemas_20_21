@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,6 +50,8 @@ namespace Projeto_IS
                 }
                 MessageBox.Show("Erro! URI Inválida!");
             }
+
         }
+
     }
 }
