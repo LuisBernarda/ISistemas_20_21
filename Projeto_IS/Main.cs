@@ -104,7 +104,7 @@ namespace Projeto_IS
 
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();  //abrir o ficheiro
-            openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*"; //filtrar por tipo de ficheiro
+            openFileDialog1.Filter = "xlsx Files (*.xlsx)|*.xlsx"; //filtrar por tipo de ficheiro
             //openFileDialog1.FilterIndex = 1;  //default
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
