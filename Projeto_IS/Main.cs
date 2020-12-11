@@ -460,6 +460,7 @@ namespace Projeto_IS
                         await PutAsync(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "GETHTML":
+                        outputHTML(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "XMLPOST":
                         await PostAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
@@ -468,6 +469,7 @@ namespace Projeto_IS
                         await PutAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "XMLHTML":
+                        outputHTML(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "EXCELPOST":
                         await PostAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
