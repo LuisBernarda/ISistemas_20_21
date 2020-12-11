@@ -1,25 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Data.OleDb;
-using System.Data.Common;
 using Newtonsoft.Json;  //usada para converter de datatable para json string
-using ExcelDataReader;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
 using NPOI.SS.UserModel;  //usada para converter de excel para datatable
 using NPOI.XSSF.UserModel;  //..
 using RestSharp;
 using System.Xml;
-
-using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using System.Net.Http;
 
@@ -46,7 +37,7 @@ namespace Projeto_IS
             //iniciar os outputs a false de modo a facilitar utilizaçao, 
             //para efeitos de testes talvez seja melhor manter comentado
             //mais info ver comentarios das funcçoes permitirInput() e permitirOutput()
-            //estas funcçoes estao presentes em inClickXml inClickExcel form inREST, outClickHtml e form outREST!
+            //estas funcçoes sao chamadas em inClickXml inClickExcel form inREST, outClickHtml e form outREST!
             permitirInput();
             // Abrir uma janela no startup a perguntar se o utilizador deseja carregar configuraçoes de fluxo previamente feitas
             //
@@ -65,6 +56,8 @@ namespace Projeto_IS
             {
                 outPath = Path.GetFullPath(exportHtml.FileName);
                 outMethod = "HTML";
+                //output aqui so para efeitos de teste
+                //antes de entregar comentar a linha!
                 outputHTML(jsonString, outPath);
                 //permitir inputs, gray out outputs
                 permitirInput();
@@ -76,22 +69,19 @@ namespace Projeto_IS
             {
                 MessageBox.Show("Erro! Ocorreu um erro a gravar o ficheiro ");
             }
-
-
-
-
-
         }
 
         private void inREST_Click(object sender, EventArgs e)
         {
-            //passar a form main para a nova form de modo a poder alterar a variavel inRESTuriAux dentro da form nova
-            //por enquanto funciona, se der tempo, utilizaçao de interfaces seria uma melhor soluçao
+            //passar a form main para a nova form de modo a poder alterar a variavel inMethod e inType dentro da form nova
+            //por enquanto funciona, se der tempo, utilizaçao de interfaces seria soluçao mais elegante
+            //infelizmente n deu :(
 
             inREST formAux = new inREST(this);
             formAux.ShowDialog();
 
             //para efeitos de testes
+            //comentar antes de entrega!
             jsonString = restToJSON(inPath);
 
 
@@ -112,7 +102,7 @@ namespace Projeto_IS
                 inMethod = "EXCEL";
 
                 //este ultimo so vai ser invocado no correr fluxos
-                jsonString = excelToJSON(inPath);  //chama a funcao excelToJson que converte o ficheiro excel numa jsonstring
+                jsonString = excelToJSON(inPath);  //chama a funcao excelToJson que converte o ficheiro excel numa jsonstring, para efeitos de teste, comentar antes da entrega!
 
                 permitirOutput();  //para desbloquear os botoes de Output
             }
@@ -134,7 +124,8 @@ namespace Projeto_IS
 
                 inPath = path;
                 inMethod = "XML";
-                jsonString = xmlToJSON(inPath);
+
+                jsonString = xmlToJSON(inPath); //Para efeitos de teste, comentar antes da entrega
 
                 //permitir output
                 permitirOutput();
@@ -155,10 +146,15 @@ namespace Projeto_IS
 
         private String restToJSON(String uriAux)
         {
+
+            //pedido a API REST de URI recebida como parametro para devolver os dados em JSON atraves de
+            //uma chamada com GET, usa a biblioteca RestSharp
             var client = new RestClient(uriAux);
             var request = new RestRequest(Method.GET);
             request.AddHeader("content-type", "application/json");
+            //Executa para tipo Object para ser o mais geral possivel
             var queryResult = client.Execute<Object>(request).Data;
+            //serializa para string json
             string json = JsonConvert.SerializeObject(queryResult);
 
             return json;
@@ -214,7 +210,7 @@ namespace Projeto_IS
             //primeiramente vamos ler os dados do nosso ficheiro para uma datatable e so depois convertemos para uma string Json atraves da  seralizacao 
             //entre objectos neste caso entre uma datatable e um Json Object atraves da biblioteca Newtonsoft  metodo jsonConvert
             jsonString = JsonConvert.SerializeObject(dtTable);
-            MessageBox.Show(jsonString);
+
             using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
             {
                 StreamWriter write = new StreamWriter(fs); //escrever para um ficheiro so para testes
@@ -226,12 +222,14 @@ namespace Projeto_IS
 
             // ExportDatatableToHtml(dtTable); para debug e testes
 
-            MessageBox.Show(jsonString);
+            MessageBox.Show(jsonString); // esta linha esta aqui para efeitos de testes, antes da entrega comentar!
             return jsonString;
         }
 
         private void outREST_Click(object sender, EventArgs e)
         {
+            //Chama a form outREST a fim do utilizador especificar que URI utilizar e metodo (POST ou PUT)
+            //Passo o this de modo a poder alterar as variaveis outMethod e outPath, tal como na inREST mais elegante seria utilizar interfaces mas tempo...
             outREST formOutREST = new outREST(this);
             formOutREST.ShowDialog();
         }
@@ -276,7 +274,7 @@ namespace Projeto_IS
             strHTMLBuilder.Append("</html>");
 
             string Htmltext = strHTMLBuilder.ToString();
-            MessageBox.Show(Htmltext);
+            MessageBox.Show(Htmltext); // apenas para efeitos de teste, remover antes da entrega!
             return Htmltext;//retorna uma variavel HTMLtext que contem o nosso codigo html, sendo basicamente uma string
 
         }
@@ -284,7 +282,8 @@ namespace Projeto_IS
 
         private string outputHTML(string strJson, string caminho)
         {
-            MessageBox.Show(strJson);
+            MessageBox.Show(strJson); //efeitos de teste apenas, remover antes da entrega!
+
             DataTable dtTable = new DataTable(); //criar uma nova datatable
             dtTable = convertStringToDataTable(strJson); //converter a string em datatable
             htmlString = ExportDatatableToHtml(dtTable); //converter a datatable em conteudo html
@@ -299,7 +298,7 @@ namespace Projeto_IS
             }
 
 
-            return htmlString;
+            return htmlString; 
         }
 
 
@@ -360,8 +359,9 @@ namespace Projeto_IS
 
         }
 
-        private void export_Click(object sender, EventArgs e)
+        private void export_Click(object sender, EventArgs e) //funcao para guardar a lista de fluxos num ficheiro xml
         {
+            // valida de existem fluxos para guardar
             if (listaFluxos.Items.Count == 0)
             {
                 MessageBox.Show("Erro! Não existem fluxos para guardar!");
@@ -401,10 +401,14 @@ namespace Projeto_IS
 
         private XmlElement createFlow(XmlDocument doc, string flowAux)
         {
+            //recebe a string da listBox e separa-a em inputs e outputs atraves de strSplits por conjuntos de chars definidos por nos
+            //a fim de minimizar hipoteses de apanhar alguma URI/caminho com a mesma sequencia de caracteres.
+            //splitIn contem o inType e o inPath nas posiçoes 0 e 1 respetivamente, splitOut mm coisa 
             string[] splitHalf = flowAux.Split(new string[] { "-->" }, StringSplitOptions.None);
             string[] splitIn = splitHalf[0].Split(new string[] { "<+>" }, StringSplitOptions.None);
             string[] splitOut = splitHalf[1].Split(new string[] { "<+>" }, StringSplitOptions.None);
 
+            //criar um elemento com os atributos 
             XmlElement flow = doc.CreateElement("flow");
             flow.SetAttribute("inputType", splitIn[0].Trim());
             flow.SetAttribute("inputPath", splitIn[1].Trim());
@@ -416,6 +420,8 @@ namespace Projeto_IS
 
         private void createFlowString(string inType, string inPath, string outType, string outPath)
         {
+            //funcao para formatar a string de modo a entrar para a listBox no formato correto, separa os inputs dos outputs atraves
+            // da seq "-->" e os tipos dos caminhos atraves da seq <+>
             string aux = inType + " <+> " + inPath + " --> " + outType + " <+> " + outPath;
 
             listaFluxos.Items.Add(aux);
@@ -425,6 +431,7 @@ namespace Projeto_IS
 
         private async void executar_Click(object sender, EventArgs e)
         {
+            //valida se existem fluxos para serem executados
             if (listaFluxos.Items.Count == 0)
             {
                 MessageBox.Show("Erro! Não existem fluxos a serem processados!");
@@ -433,10 +440,14 @@ namespace Projeto_IS
 
             foreach (string fluxo in listaFluxos.Items)
             {
+                //recebe a string fluxo e separa-a em inputs e outputs atraves de strSplits por conjuntos de chars definidos por nos
+                //a fim de minimizar hipoteses de apanhar alguma URI/caminho com a mesma sequencia de caracteres.
+                //splitIn contem o inType e o inPath nas posiçoes 0 e 1 respetivamente, splitOut mm coisa 
                 string[] splitHalf = fluxo.Split(new string[] { "-->" }, StringSplitOptions.None);
                 string[] splitIn = splitHalf[0].Split(new string[] { "<+>" }, StringSplitOptions.None);
                 string[] splitOut = splitHalf[1].Split(new string[] { "<+>" }, StringSplitOptions.None);
 
+                //Trim para retirar whitespace no inicio e fim da string
                 string aux = splitIn[0].Trim() + splitOut[0].Trim();
 
                 switch (aux)
@@ -499,11 +510,13 @@ namespace Projeto_IS
 
         public void import_Click(object sender, EventArgs e)
         {
+            //funcao para abrir uma configuracao de fluxos de um ficheiro xml e colocar os dados na listBox listaFluxos
+
             OpenFileDialog importXml = new OpenFileDialog();
             importXml.Filter = "xml files (*.xml)|*.xml";
             if (importXml.ShowDialog() == DialogResult.OK)
             {
-
+                //funcao que valida se o xml e valido atraves de XSD e coloca os dados na listbox
                 HandlerXML(Path.GetFullPath(importXml.FileName));
             }
             else
@@ -514,11 +527,13 @@ namespace Projeto_IS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //limpar fluxos da lista
             listaFluxos.Items.Clear();
         }
 
         public void HandlerXML(string path)
         {
+            //recebe o caminho do ficheiro e o xsd 
             HandlerXML handler = new HandlerXML(path, xsd);
             if (handler.ValidateXML())
             {

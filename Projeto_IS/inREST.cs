@@ -17,6 +17,7 @@ namespace Projeto_IS
         public inREST(Main mainAux)
         {
             InitializeComponent();
+            //recebe a main form de modo a alterar as variaveis da main de inMethod e inPath
             formAux = mainAux;
         }
 

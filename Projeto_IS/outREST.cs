@@ -18,7 +18,9 @@ namespace Projeto_IS
         public outREST(Main mainAux)
         {
             InitializeComponent();
+            //main passada para esta form de modo a alterar variaveis outMethod e outPath
             formAux = mainAux;
+            //colocar o POST a aparecer by default
             method.SelectedIndex = 0;
         }
 
