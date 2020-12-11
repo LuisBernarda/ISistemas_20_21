@@ -141,3 +141,4 @@ C:\Users\Goncalo\Documents\3ano\IS\Projeto\ISistemas_20_21\Projeto_IS\obj\Debug\
 C:\Users\Goncalo\Documents\3ano\IS\Projeto\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.csproj.CopyComplete
 C:\Users\Goncalo\Documents\3ano\IS\Projeto\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.exe
 C:\Users\Goncalo\Documents\3ano\IS\Projeto\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.pdb
+C:\Users\Celso Reis\Documents\ProjetoIS\ISistemas_20_21\Projeto_IS\obj\Debug\Projeto_IS.startup_import.resources

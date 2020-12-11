@@ -109,39 +109,35 @@ namespace Projeto_IS
 
         }
 
-        private void inXML_Click(object sender, EventArgs e)
+        private void inXML_Click(object sender, EventArgs e)             //[Function] Abre um ficheiro XML e faz a conversão para JSON
         {
-            //inXML formXML = new inXML(this);
-            //jsonString = xmlToJSON(inPath);
-            //formXML.ShowDialog();
-            openFileDialog2.InitialDirectory = Application.StartupPath;
-            openFileDialog2.Filter = "xml files (*.xml)|*.xml";
+            OpenFileDialog openFileDialog2 = new OpenFileDialog();      //Criar uma nova instancia do tipo "OpenFileDialog"
+            openFileDialog2.Filter = "xml files (*.xml)|*.xml";         //Filtrar o "OpenFileDialog" por o tipo de file XML
 
-            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)        //Se o ficheiro selecinado for correto
             {
-                string path = openFileDialog2.FileName;
-                MessageBox.Show(path);
+                string path = openFileDialog2.FileName;                 //Adiciona a variavel "path" o caminho do ficheiro selecionado
+                MessageBox.Show(path);                                  //[Debug] mostra o caminho    
 
-                inPath = path;
+                inPath = path;                                          
                 inMethod = "XML";
+                                                                    
+                jsonString = xmlToJSON(inPath);                         //Para efeitos de teste, comentar antes da entrega
 
-                jsonString = xmlToJSON(inPath); //Para efeitos de teste, comentar antes da entrega
-
-                //permitir output
-                permitirOutput();
+                
+                permitirOutput();                                       // depois da accão realizada desbloqueia os botoes de OutPut 
             }
         }
 
-        private String xmlToJSON(String path)
+        private String xmlToJSON(String path)                       //[Function] Conversão de XML para JSON
         {
 
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path);
-            MessageBox.Show(path);
-            //A variavel "jsonText" contem  o JSON já convertido 
-            string jsonText = JsonConvert.SerializeXmlNode(doc);
-            MessageBox.Show(jsonText);
-            return jsonText;
+            XmlDocument doc = new XmlDocument();                    //cria uma variavel em memoria "doc" do tipo XML
+            doc.Load(path);                                         // É carregado para a variavel "doc" o ficheiro XML atraves do ficheiro  
+            MessageBox.Show(path);                                  //[Debug] mostra o caminho
+            string jsonText = JsonConvert.SerializeXmlNode(doc);    // É carregado para a variavel "doc" o ficheiro XML atraves do ficheiro   
+            MessageBox.Show(jsonText);                              //[Debug] mostra a "json string já convertida"
+            return jsonText;                                        //Devolve mos a variavel já com a conversão
         }
 
         private String restToJSON(String uriAux)
@@ -297,7 +293,7 @@ namespace Projeto_IS
                 sw.WriteLine(htmlString);//escrever a string para criar o ficheiro html
             }
 
-
+            MessageBox.Show(path);  //Efeito debug
             return htmlString; 
         }
 
@@ -468,6 +464,7 @@ namespace Projeto_IS
                         await PutAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "XMLHTML":
+                        outputHTML(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "EXCELPOST":
                         await PostAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
