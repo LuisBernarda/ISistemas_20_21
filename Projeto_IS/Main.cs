@@ -456,6 +456,7 @@ namespace Projeto_IS
                         await PutAsync(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "GETHTML":
+                        outputHTML(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                         break;
                     case "XMLPOST":
                         await PostAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
