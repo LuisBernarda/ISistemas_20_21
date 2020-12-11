@@ -32,10 +32,8 @@ namespace Projeto_IS
         public string inMethod;
         public string outMethod;
         public string outRestURI;
-        public String inRESTuriAux;
-        public String outRestMethod;
-        public String jsonString;
-        public String htmlString;
+        public string jsonString;
+        public string htmlString;
         public string outPath;
 
         //ja esta a funcionar, mas n garanto que quando isto for corrido em maquinas que nao as nossas funcione, quinta tenho que ver maneira melhor de fazer isto
@@ -403,9 +401,9 @@ namespace Projeto_IS
 
         private XmlElement createFlow(XmlDocument doc, string flowAux)
         {
-            string[] splitHalf = flowAux.Split('*');
-            string[] splitIn = splitHalf[0].Split('>');
-            string[] splitOut = splitHalf[1].Split('>');
+            string[] splitHalf = flowAux.Split(new string[] { "-->" }, StringSplitOptions.None);
+            string[] splitIn = splitHalf[0].Split(new string[] { "<+>" }, StringSplitOptions.None);
+            string[] splitOut = splitHalf[1].Split(new string[] { "<+>" }, StringSplitOptions.None);
 
             XmlElement flow = doc.CreateElement("flow");
             flow.SetAttribute("inputType", splitIn[0].Trim());
@@ -418,7 +416,7 @@ namespace Projeto_IS
 
         private void createFlowString(string inType, string inPath, string outType, string outPath)
         {
-            string aux = inType + " > " + inPath + " * " + outType + " > " + outPath;
+            string aux = inType + " <+> " + inPath + " --> " + outType + " <+> " + outPath;
 
             listaFluxos.Items.Add(aux);
         }
@@ -435,9 +433,9 @@ namespace Projeto_IS
 
             foreach (string fluxo in listaFluxos.Items)
             {
-                string[] splitHalf = fluxo.Split('*');
-                string[] splitIn = splitHalf[0].Split('>');
-                string[] splitOut = splitHalf[1].Split('>');
+                string[] splitHalf = fluxo.Split(new string[] { "-->" }, StringSplitOptions.None);
+                string[] splitIn = splitHalf[0].Split(new string[] { "<+>" }, StringSplitOptions.None);
+                string[] splitOut = splitHalf[1].Split(new string[] { "<+>" }, StringSplitOptions.None);
 
                 string aux = splitIn[0].Trim() + splitOut[0].Trim();
 
