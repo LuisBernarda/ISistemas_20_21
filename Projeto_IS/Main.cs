@@ -119,12 +119,12 @@ namespace Projeto_IS
                 string path = openFileDialog2.FileName;                 //Adiciona a variavel "path" o caminho do ficheiro selecionado
                 MessageBox.Show(path);                                  //[Debug] mostra o caminho    
 
-                inPath = path;                                          
+                inPath = path;
                 inMethod = "XML";
-                                                                    
+
                 jsonString = xmlToJSON(inPath);                         //Para efeitos de teste, comentar antes da entrega
 
-                
+
                 permitirOutput();                                       // depois da accão realizada desbloqueia os botoes de OutPut 
             }
         }
@@ -294,7 +294,7 @@ namespace Projeto_IS
             }
 
             MessageBox.Show(path);  //Efeito debug
-            return htmlString; 
+            return htmlString;
         }
 
 
@@ -414,7 +414,7 @@ namespace Projeto_IS
             return flow;
         }
 
-        private void createFlowString(string inType, string inPath, string outType, string outPath)
+        public void createFlowString(string inType, string inPath, string outType, string outPath)
         {
             //funcao para formatar a string de modo a entrar para a listBox no formato correto, separa os inputs dos outputs atraves
             // da seq "-->" e os tipos dos caminhos atraves da seq <+>
@@ -558,11 +558,10 @@ namespace Projeto_IS
         {
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            /*var response =*/
-            await client.PostAsync(url, data);
+            var response = await client.PostAsync(url, data);
 
-            /*string result = response.Content.ReadAsStringAsync().Result;
-            Console.WriteLine(result);*/
+            string result = response.Content.ReadAsStringAsync().Result;
+            MessageBox.Show(result);
         }
 
         public static async Task PutAsync(string json, string url)

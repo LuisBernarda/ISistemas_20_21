@@ -48,9 +48,13 @@ namespace Projeto_IS
                     formAux.outPath = url.Text;
                     formAux.outMethod = method.SelectedItem.ToString();
                     formAux.permitirInput();
+                    formAux.createFlowString(formAux.inMethod, formAux.inPath, formAux.outMethod, formAux.outPath);
                     this.Close();
                 }
-                MessageBox.Show("Erro! URI Inválida!");
+                else
+                {
+                    MessageBox.Show("Erro! URI Inválida!");
+                }
             }
 
         }
