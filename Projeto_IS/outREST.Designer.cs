@@ -62,8 +62,8 @@ namespace Projeto_IS
             // 
             this.method.FormattingEnabled = true;
             this.method.Items.AddRange(new object[] {
-            "PUT",
-            "POST"});
+            "POST",
+            "PUT"});
             this.method.Location = new System.Drawing.Point(88, 276);
             this.method.Name = "method";
             this.method.Size = new System.Drawing.Size(186, 24);
