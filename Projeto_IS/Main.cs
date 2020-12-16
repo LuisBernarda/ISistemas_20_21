@@ -568,11 +568,10 @@ namespace Projeto_IS
         {
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            /*var response =*/
-            await client.PutAsync(url, data);
+            var response = await client.PutAsync(url, data);
 
-            /*string result = response.Content.ReadAsStringAsync().Result;
-            Console.WriteLine(result);*/
+            string result = response.Content.ReadAsStringAsync().Result;
+            MessageBox.Show(result);
         }
 
 
