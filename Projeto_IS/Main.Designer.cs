@@ -43,6 +43,7 @@ namespace Projeto_IS
             this.executar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
+            this.cancelar = new System.Windows.Forms.Button();
             this.output.SuspendLayout();
             this.INPUT.SuspendLayout();
             this.SuspendLayout();
@@ -176,10 +177,10 @@ namespace Projeto_IS
             // 
             // executar
             // 
-            this.executar.Location = new System.Drawing.Point(848, 566);
+            this.executar.Location = new System.Drawing.Point(859, 566);
             this.executar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.executar.Name = "executar";
-            this.executar.Size = new System.Drawing.Size(272, 55);
+            this.executar.Size = new System.Drawing.Size(261, 55);
             this.executar.TabIndex = 6;
             this.executar.Text = "Correr fluxos";
             this.executar.UseVisualStyleBackColor = true;
@@ -200,11 +201,22 @@ namespace Projeto_IS
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cancelar
+            // 
+            this.cancelar.Location = new System.Drawing.Point(39, 566);
+            this.cancelar.Name = "cancelar";
+            this.cancelar.Size = new System.Drawing.Size(261, 55);
+            this.cancelar.TabIndex = 8;
+            this.cancelar.Text = "Cancelar";
+            this.cancelar.UseVisualStyleBackColor = true;
+            this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 647);
+            this.Controls.Add(this.cancelar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.executar);
             this.Controls.Add(this.projetoIS);
@@ -239,6 +251,7 @@ namespace Projeto_IS
         private System.Windows.Forms.Button executar;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancelar;
     }
 }
 
