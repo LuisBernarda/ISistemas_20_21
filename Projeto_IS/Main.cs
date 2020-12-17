@@ -466,7 +466,7 @@ namespace Projeto_IS
                         {
                             //N sei se isto funciona! tem que ser testado!
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "GETPUT":
                         try
@@ -478,7 +478,7 @@ namespace Projeto_IS
                         {
                             //N sei se isto funciona! tem que ser testado!
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "GETHTML":
                         try
@@ -489,7 +489,7 @@ namespace Projeto_IS
                         catch (Exception ex)
                         {
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "XMLPOST":
                         try { 
@@ -499,7 +499,7 @@ namespace Projeto_IS
                         {
                             //N sei se isto funciona! tem que ser testado!
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "XMLPUT":
                         try
@@ -510,7 +510,7 @@ namespace Projeto_IS
                         {
                             //N sei se isto funciona! tem que ser testado!
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "XMLHTML":
                         try
@@ -521,7 +521,7 @@ namespace Projeto_IS
                         catch (Exception ex)
                         {
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "EXCELPOST":
                         try
@@ -532,7 +532,7 @@ namespace Projeto_IS
                         {
                             //N sei se isto funciona! tem que ser testado!
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "EXCELPUT":
                         try
@@ -543,7 +543,7 @@ namespace Projeto_IS
                         {
                             //N sei se isto funciona! tem que ser testado!
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                     case "EXCELHTML":
                         try
@@ -554,7 +554,7 @@ namespace Projeto_IS
                         catch (Exception ex)
                         {
                             Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
-                            continue;
+                            break;
                         }
                 }
             }
