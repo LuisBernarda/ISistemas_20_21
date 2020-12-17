@@ -462,10 +462,10 @@ namespace Projeto_IS
                             await PostAsync(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             /*MessageBox.Show("sucesso!");*/
                             break;
-                        } catch (WebException ex)
+                        } catch (Exception ex)
                         {
                             //N sei se isto funciona! tem que ser testado!
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + (HttpWebResponse) ex.Response);
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "GETPUT":
@@ -474,10 +474,10 @@ namespace Projeto_IS
                             await PutAsync(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             break;
                         }
-                        catch (WebException ex)
+                        catch (Exception ex)
                         {
                             //N sei se isto funciona! tem que ser testado!
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + (HttpWebResponse)ex.Response);
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "GETHTML":
@@ -485,19 +485,20 @@ namespace Projeto_IS
                         {
                             outputHTML(restToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             break;
-                        } catch
+                        }
+                        catch (Exception ex)
                         {
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro!");
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "XMLPOST":
                         try { 
                             await PostAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             break;
-                        } catch (WebException ex)
+                        } catch (Exception ex)
                         {
                             //N sei se isto funciona! tem que ser testado!
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + (HttpWebResponse)ex.Response);
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "XMLPUT":
@@ -505,10 +506,10 @@ namespace Projeto_IS
                         {
                             await PutAsync(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             break;
-                        } catch (WebException ex)
+                        } catch (Exception ex)
                         {
                             //N sei se isto funciona! tem que ser testado!
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + (HttpWebResponse)ex.Response);
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "XMLHTML":
@@ -517,9 +518,9 @@ namespace Projeto_IS
                             outputHTML(xmlToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             break;
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro!");
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "EXCELPOST":
@@ -527,10 +528,10 @@ namespace Projeto_IS
                         {
                             await PostAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
                             break;
-                        } catch (WebException ex)
+                        } catch (Exception ex)
                         {
                             //N sei se isto funciona! tem que ser testado!
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + (HttpWebResponse)ex.Response);
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "EXCELPUT":
@@ -538,10 +539,10 @@ namespace Projeto_IS
                         {
                             await PutAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
                             break;
-                        } catch (WebException ex)
+                        } catch (Exception ex)
                         {
                             //N sei se isto funciona! tem que ser testado!
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + (HttpWebResponse)ex.Response);
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                     case "EXCELHTML":
@@ -549,9 +550,10 @@ namespace Projeto_IS
                         {
                             outputHTML(excelToJSON(splitIn[1].Trim()), splitOut[1].Trim());  // para chamar os fluxos recursivamente
                             break;
-                        } catch
+                        }
+                        catch (Exception ex)
                         {
-                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro!");
+                            Console.WriteLine("O fluxo " + fluxo + " numero na lista " + counter + " deu erro " + ex.ToString());
                             continue;
                         }
                 }
