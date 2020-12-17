@@ -53,20 +53,19 @@ namespace Projeto_IS
             this.listaFluxos.Enabled = false;
             this.listaFluxos.FormattingEnabled = true;
             this.listaFluxos.HorizontalScrollbar = true;
-            this.listaFluxos.ItemHeight = 16;
-            this.listaFluxos.Location = new System.Drawing.Point(299, 155);
-            this.listaFluxos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listaFluxos.Location = new System.Drawing.Point(224, 126);
+            this.listaFluxos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listaFluxos.Name = "listaFluxos";
             this.listaFluxos.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listaFluxos.Size = new System.Drawing.Size(551, 276);
+            this.listaFluxos.Size = new System.Drawing.Size(414, 225);
             this.listaFluxos.TabIndex = 0;
             // 
             // import
             // 
-            this.import.Location = new System.Drawing.Point(501, 449);
-            this.import.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.import.Location = new System.Drawing.Point(376, 365);
+            this.import.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.import.Name = "import";
-            this.import.Size = new System.Drawing.Size(139, 37);
+            this.import.Size = new System.Drawing.Size(104, 30);
             this.import.TabIndex = 1;
             this.import.Text = "Abrir Fluxos";
             this.import.UseVisualStyleBackColor = true;
@@ -74,10 +73,10 @@ namespace Projeto_IS
             // 
             // export
             // 
-            this.export.Location = new System.Drawing.Point(709, 449);
-            this.export.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.export.Location = new System.Drawing.Point(532, 365);
+            this.export.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.export.Name = "export";
-            this.export.Size = new System.Drawing.Size(139, 37);
+            this.export.Size = new System.Drawing.Size(104, 30);
             this.export.TabIndex = 2;
             this.export.Text = "Guardar fluxos";
             this.export.UseVisualStyleBackColor = true;
@@ -87,21 +86,21 @@ namespace Projeto_IS
             // 
             this.output.Controls.Add(this.outHTML);
             this.output.Controls.Add(this.outREST);
-            this.output.Location = new System.Drawing.Point(920, 155);
-            this.output.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.output.Location = new System.Drawing.Point(690, 126);
+            this.output.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.output.Name = "output";
-            this.output.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.output.Size = new System.Drawing.Size(200, 276);
+            this.output.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.output.Size = new System.Drawing.Size(150, 224);
             this.output.TabIndex = 3;
             this.output.TabStop = false;
             this.output.Text = "OUTPUT";
             // 
             // outHTML
             // 
-            this.outHTML.Location = new System.Drawing.Point(60, 149);
-            this.outHTML.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.outHTML.Location = new System.Drawing.Point(45, 121);
+            this.outHTML.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.outHTML.Name = "outHTML";
-            this.outHTML.Size = new System.Drawing.Size(75, 63);
+            this.outHTML.Size = new System.Drawing.Size(56, 51);
             this.outHTML.TabIndex = 1;
             this.outHTML.Text = "HTML";
             this.outHTML.UseVisualStyleBackColor = true;
@@ -109,10 +108,10 @@ namespace Projeto_IS
             // 
             // outREST
             // 
-            this.outREST.Location = new System.Drawing.Point(60, 68);
-            this.outREST.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.outREST.Location = new System.Drawing.Point(45, 55);
+            this.outREST.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.outREST.Name = "outREST";
-            this.outREST.Size = new System.Drawing.Size(75, 63);
+            this.outREST.Size = new System.Drawing.Size(56, 51);
             this.outREST.TabIndex = 0;
             this.outREST.Text = "REST";
             this.outREST.UseVisualStyleBackColor = true;
@@ -123,21 +122,21 @@ namespace Projeto_IS
             this.INPUT.Controls.Add(this.inEXCEL);
             this.INPUT.Controls.Add(this.inXML);
             this.INPUT.Controls.Add(this.inREST);
-            this.INPUT.Location = new System.Drawing.Point(39, 155);
-            this.INPUT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.INPUT.Location = new System.Drawing.Point(29, 126);
+            this.INPUT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.INPUT.Name = "INPUT";
-            this.INPUT.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.INPUT.Size = new System.Drawing.Size(200, 276);
+            this.INPUT.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.INPUT.Size = new System.Drawing.Size(150, 224);
             this.INPUT.TabIndex = 4;
             this.INPUT.TabStop = false;
             this.INPUT.Text = "INPUT";
             // 
             // inEXCEL
             // 
-            this.inEXCEL.Location = new System.Drawing.Point(49, 177);
-            this.inEXCEL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.inEXCEL.Location = new System.Drawing.Point(37, 144);
+            this.inEXCEL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inEXCEL.Name = "inEXCEL";
-            this.inEXCEL.Size = new System.Drawing.Size(75, 63);
+            this.inEXCEL.Size = new System.Drawing.Size(56, 51);
             this.inEXCEL.TabIndex = 2;
             this.inEXCEL.Text = "Excel";
             this.inEXCEL.UseVisualStyleBackColor = true;
@@ -145,10 +144,10 @@ namespace Projeto_IS
             // 
             // inXML
             // 
-            this.inXML.Location = new System.Drawing.Point(49, 108);
-            this.inXML.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.inXML.Location = new System.Drawing.Point(37, 88);
+            this.inXML.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inXML.Name = "inXML";
-            this.inXML.Size = new System.Drawing.Size(75, 63);
+            this.inXML.Size = new System.Drawing.Size(56, 51);
             this.inXML.TabIndex = 1;
             this.inXML.Text = "XML";
             this.inXML.UseVisualStyleBackColor = true;
@@ -156,10 +155,10 @@ namespace Projeto_IS
             // 
             // inREST
             // 
-            this.inREST.Location = new System.Drawing.Point(49, 39);
-            this.inREST.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.inREST.Location = new System.Drawing.Point(37, 32);
+            this.inREST.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inREST.Name = "inREST";
-            this.inREST.Size = new System.Drawing.Size(75, 63);
+            this.inREST.Size = new System.Drawing.Size(56, 51);
             this.inREST.TabIndex = 0;
             this.inREST.Text = "REST";
             this.inREST.UseVisualStyleBackColor = true;
@@ -169,18 +168,19 @@ namespace Projeto_IS
             // 
             this.projetoIS.AutoSize = true;
             this.projetoIS.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projetoIS.Location = new System.Drawing.Point(261, 47);
+            this.projetoIS.Location = new System.Drawing.Point(196, 38);
+            this.projetoIS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.projetoIS.Name = "projetoIS";
-            this.projetoIS.Size = new System.Drawing.Size(635, 44);
+            this.projetoIS.Size = new System.Drawing.Size(501, 36);
             this.projetoIS.TabIndex = 5;
             this.projetoIS.Text = "Projeto de Integração de Sistemas";
             // 
             // executar
             // 
-            this.executar.Location = new System.Drawing.Point(859, 566);
-            this.executar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.executar.Location = new System.Drawing.Point(644, 460);
+            this.executar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.executar.Name = "executar";
-            this.executar.Size = new System.Drawing.Size(261, 55);
+            this.executar.Size = new System.Drawing.Size(196, 45);
             this.executar.TabIndex = 6;
             this.executar.Text = "Correr fluxos";
             this.executar.UseVisualStyleBackColor = true;
@@ -192,10 +192,10 @@ namespace Projeto_IS
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(299, 449);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(224, 365);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 37);
+            this.button1.Size = new System.Drawing.Size(104, 30);
             this.button1.TabIndex = 7;
             this.button1.Text = "Eliminar Fluxos";
             this.button1.UseVisualStyleBackColor = true;
@@ -203,9 +203,10 @@ namespace Projeto_IS
             // 
             // cancelar
             // 
-            this.cancelar.Location = new System.Drawing.Point(39, 566);
+            this.cancelar.Location = new System.Drawing.Point(29, 460);
+            this.cancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelar.Name = "cancelar";
-            this.cancelar.Size = new System.Drawing.Size(261, 55);
+            this.cancelar.Size = new System.Drawing.Size(196, 45);
             this.cancelar.TabIndex = 8;
             this.cancelar.Text = "Cancelar";
             this.cancelar.UseVisualStyleBackColor = true;
@@ -213,9 +214,9 @@ namespace Projeto_IS
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 647);
+            this.ClientSize = new System.Drawing.Size(894, 526);
             this.Controls.Add(this.cancelar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.executar);
@@ -225,9 +226,10 @@ namespace Projeto_IS
             this.Controls.Add(this.export);
             this.Controls.Add(this.import);
             this.Controls.Add(this.listaFluxos);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Main";
             this.Text = "Form1";
+           
             this.output.ResumeLayout(false);
             this.INPUT.ResumeLayout(false);
             this.ResumeLayout(false);

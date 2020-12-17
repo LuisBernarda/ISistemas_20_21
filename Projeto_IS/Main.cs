@@ -526,7 +526,7 @@ namespace Projeto_IS
                     case "EXCELPOST":
                         try
                         {
-                            await PostAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
+                            await PostAsync(excelToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             break;
                         } catch (Exception ex)
                         {
@@ -658,6 +658,8 @@ namespace Projeto_IS
         {
             permitirInput();
         }
+
+        
     }
 
 }
