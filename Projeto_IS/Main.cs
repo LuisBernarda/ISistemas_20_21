@@ -29,7 +29,7 @@ namespace Projeto_IS
         public string outPath;
 
         //ja esta a funcionar, mas n garanto que quando isto for corrido em maquinas que nao as nossas funcione, quinta tenho que ver maneira melhor de fazer isto
-        public string xsd = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\flowsXSD.xsd";
+        public string xsd = @".\flowsXSD.xsd";
 
 
         public Main()

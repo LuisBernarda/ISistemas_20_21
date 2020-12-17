@@ -50,11 +50,10 @@ namespace Projeto_IS
             // 
             // listaFluxos
             // 
-            this.listaFluxos.Enabled = false;
             this.listaFluxos.FormattingEnabled = true;
             this.listaFluxos.HorizontalScrollbar = true;
             this.listaFluxos.Location = new System.Drawing.Point(224, 126);
-            this.listaFluxos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listaFluxos.Margin = new System.Windows.Forms.Padding(2);
             this.listaFluxos.Name = "listaFluxos";
             this.listaFluxos.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listaFluxos.Size = new System.Drawing.Size(414, 225);
@@ -63,7 +62,7 @@ namespace Projeto_IS
             // import
             // 
             this.import.Location = new System.Drawing.Point(376, 365);
-            this.import.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.import.Margin = new System.Windows.Forms.Padding(2);
             this.import.Name = "import";
             this.import.Size = new System.Drawing.Size(104, 30);
             this.import.TabIndex = 1;
@@ -74,7 +73,7 @@ namespace Projeto_IS
             // export
             // 
             this.export.Location = new System.Drawing.Point(532, 365);
-            this.export.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.export.Margin = new System.Windows.Forms.Padding(2);
             this.export.Name = "export";
             this.export.Size = new System.Drawing.Size(104, 30);
             this.export.TabIndex = 2;
@@ -87,9 +86,9 @@ namespace Projeto_IS
             this.output.Controls.Add(this.outHTML);
             this.output.Controls.Add(this.outREST);
             this.output.Location = new System.Drawing.Point(690, 126);
-            this.output.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.output.Margin = new System.Windows.Forms.Padding(2);
             this.output.Name = "output";
-            this.output.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.output.Padding = new System.Windows.Forms.Padding(2);
             this.output.Size = new System.Drawing.Size(150, 224);
             this.output.TabIndex = 3;
             this.output.TabStop = false;
@@ -98,7 +97,7 @@ namespace Projeto_IS
             // outHTML
             // 
             this.outHTML.Location = new System.Drawing.Point(45, 121);
-            this.outHTML.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.outHTML.Margin = new System.Windows.Forms.Padding(2);
             this.outHTML.Name = "outHTML";
             this.outHTML.Size = new System.Drawing.Size(56, 51);
             this.outHTML.TabIndex = 1;
@@ -109,7 +108,7 @@ namespace Projeto_IS
             // outREST
             // 
             this.outREST.Location = new System.Drawing.Point(45, 55);
-            this.outREST.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.outREST.Margin = new System.Windows.Forms.Padding(2);
             this.outREST.Name = "outREST";
             this.outREST.Size = new System.Drawing.Size(56, 51);
             this.outREST.TabIndex = 0;
@@ -123,9 +122,9 @@ namespace Projeto_IS
             this.INPUT.Controls.Add(this.inXML);
             this.INPUT.Controls.Add(this.inREST);
             this.INPUT.Location = new System.Drawing.Point(29, 126);
-            this.INPUT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.INPUT.Margin = new System.Windows.Forms.Padding(2);
             this.INPUT.Name = "INPUT";
-            this.INPUT.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.INPUT.Padding = new System.Windows.Forms.Padding(2);
             this.INPUT.Size = new System.Drawing.Size(150, 224);
             this.INPUT.TabIndex = 4;
             this.INPUT.TabStop = false;
@@ -134,7 +133,7 @@ namespace Projeto_IS
             // inEXCEL
             // 
             this.inEXCEL.Location = new System.Drawing.Point(37, 144);
-            this.inEXCEL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inEXCEL.Margin = new System.Windows.Forms.Padding(2);
             this.inEXCEL.Name = "inEXCEL";
             this.inEXCEL.Size = new System.Drawing.Size(56, 51);
             this.inEXCEL.TabIndex = 2;
@@ -145,7 +144,7 @@ namespace Projeto_IS
             // inXML
             // 
             this.inXML.Location = new System.Drawing.Point(37, 88);
-            this.inXML.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inXML.Margin = new System.Windows.Forms.Padding(2);
             this.inXML.Name = "inXML";
             this.inXML.Size = new System.Drawing.Size(56, 51);
             this.inXML.TabIndex = 1;
@@ -156,7 +155,7 @@ namespace Projeto_IS
             // inREST
             // 
             this.inREST.Location = new System.Drawing.Point(37, 32);
-            this.inREST.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inREST.Margin = new System.Windows.Forms.Padding(2);
             this.inREST.Name = "inREST";
             this.inREST.Size = new System.Drawing.Size(56, 51);
             this.inREST.TabIndex = 0;
@@ -178,7 +177,7 @@ namespace Projeto_IS
             // executar
             // 
             this.executar.Location = new System.Drawing.Point(644, 460);
-            this.executar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.executar.Margin = new System.Windows.Forms.Padding(2);
             this.executar.Name = "executar";
             this.executar.Size = new System.Drawing.Size(196, 45);
             this.executar.TabIndex = 6;
@@ -193,7 +192,7 @@ namespace Projeto_IS
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(224, 365);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 30);
             this.button1.TabIndex = 7;
@@ -204,7 +203,7 @@ namespace Projeto_IS
             // cancelar
             // 
             this.cancelar.Location = new System.Drawing.Point(29, 460);
-            this.cancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.cancelar.Name = "cancelar";
             this.cancelar.Size = new System.Drawing.Size(196, 45);
             this.cancelar.TabIndex = 8;
@@ -226,10 +225,9 @@ namespace Projeto_IS
             this.Controls.Add(this.export);
             this.Controls.Add(this.import);
             this.Controls.Add(this.listaFluxos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.Text = "Form1";
-           
             this.output.ResumeLayout(false);
             this.INPUT.ResumeLayout(false);
             this.ResumeLayout(false);
