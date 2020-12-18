@@ -537,7 +537,7 @@ namespace Projeto_IS
                     case "EXCELPUT":
                         try
                         {
-                            await PutAsync(excelToJSON(excelToJSON(splitIn[1].Trim())), splitOut[1].Trim());
+                            await PutAsync(excelToJSON(splitIn[1].Trim()), splitOut[1].Trim());
                             break;
                         } catch (Exception ex)
                         {
