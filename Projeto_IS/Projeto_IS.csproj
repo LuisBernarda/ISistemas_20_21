@@ -81,7 +81,9 @@
     <Compile Include="startup_import.Designer.cs">
       <DependentUpon>startup_import.cs</DependentUpon>
     </Compile>
-    <Compile Include="HandlerXML.cs" />
+    <Compile Include="HandlerXML.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="outREST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +125,9 @@
     <EmbeddedResource Include="startup_import.resx">
       <DependentUpon>startup_import.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="flowsXSD.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
