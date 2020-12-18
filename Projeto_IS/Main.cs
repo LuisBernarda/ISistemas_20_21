@@ -208,18 +208,18 @@ namespace Projeto_IS
             //entre objectos neste caso entre uma datatable e um Json Object atraves da biblioteca Newtonsoft  metodo jsonConvert
             jsonString = JsonConvert.SerializeObject(dtTable);
 
-            using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
-            {
-                StreamWriter write = new StreamWriter(fs); //escrever para um ficheiro so para testes
-                write.Write(JsonConvert.SerializeObject(dtTable));
-                write.Flush();
-                write.Close();
-                fs.Close();
-            }
+           // using (FileStream fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
+           // {
+               // StreamWriter write = new StreamWriter(fs); //escrever para um ficheiro so para testes    para testes 
+              //  write.Write(JsonConvert.SerializeObject(dtTable));
+              //  write.Flush();
+              //  write.Close();
+              //  fs.Close();
+            //}
 
             // ExportDatatableToHtml(dtTable); para debug e testes
 
-            MessageBox.Show(jsonString); // esta linha esta aqui para efeitos de testes, antes da entrega comentar!
+            //MessageBox.Show(jsonString); // esta linha esta aqui para efeitos de testes, antes da entrega comentar!
             return jsonString;
         }
 
@@ -271,7 +271,7 @@ namespace Projeto_IS
             strHTMLBuilder.Append("</html>");
 
             string Htmltext = strHTMLBuilder.ToString();
-            MessageBox.Show(Htmltext); // apenas para efeitos de teste, remover antes da entrega!
+            //MessageBox.Show(Htmltext); // apenas para efeitos de teste, remover antes da entrega!
             return Htmltext;//retorna uma variavel HTMLtext que contem o nosso codigo html, sendo basicamente uma string
 
         }
@@ -279,7 +279,7 @@ namespace Projeto_IS
 
         private string outputHTML(string strJson, string caminho)
         {
-            MessageBox.Show(strJson); //efeitos de teste apenas, remover antes da entrega!
+            //MessageBox.Show(strJson); //efeitos de teste apenas, remover antes da entrega!
 
             DataTable dtTable = new DataTable(); //criar uma nova datatable
             dtTable = convertStringToDataTable(strJson); //converter a string em datatable
@@ -294,7 +294,7 @@ namespace Projeto_IS
                 sw.WriteLine(htmlString);//escrever a string para criar o ficheiro html
             }
 
-            MessageBox.Show(path);  //Efeito debug
+            //MessageBox.Show(path);  //Efeito debug
             return htmlString;
         }
 
