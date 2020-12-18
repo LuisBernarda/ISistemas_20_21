@@ -99,7 +99,7 @@ namespace Projeto_IS
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 inPath = openFileDialog1.FileName;
-                MessageBox.Show(inPath);
+                //MessageBox.Show(inPath);
                 inMethod = "EXCEL";
 
                 //este ultimo so vai ser invocado no correr fluxos
@@ -118,7 +118,7 @@ namespace Projeto_IS
             if (openFileDialog2.ShowDialog() == DialogResult.OK)        //Se o ficheiro selecinado for correto
             {
                 string path = openFileDialog2.FileName;                 //Adiciona a variavel "path" o caminho do ficheiro selecionado
-                MessageBox.Show(path);                                  //[Debug] mostra o caminho    
+                //MessageBox.Show(path);                                  //[Debug] mostra o caminho    
 
                 inPath = path;
                 inMethod = "XML";
@@ -135,9 +135,9 @@ namespace Projeto_IS
 
             XmlDocument doc = new XmlDocument();                    //cria uma variavel em memoria "doc" do tipo XML
             doc.Load(path);                                         // É carregado para a variavel "doc" o ficheiro XML atraves do ficheiro  
-            MessageBox.Show(path);                                  //[Debug] mostra o caminho
+            //MessageBox.Show(path);                                  //[Debug] mostra o caminho
             string jsonText = JsonConvert.SerializeXmlNode(doc);    // É carregado para a variavel "doc" o ficheiro XML atraves do ficheiro   
-            MessageBox.Show(jsonText);                              //[Debug] mostra a "json string já convertida"
+           // MessageBox.Show(jsonText);                              //[Debug] mostra a "json string já convertida"
             return jsonText;                                        //Devolve mos a variavel já com a conversão
         }
 
@@ -641,7 +641,7 @@ namespace Projeto_IS
             var response = await client.PostAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
-            MessageBox.Show(result);
+            //MessageBox.Show(result); para testes
         }
 
         public static async Task PutAsync(string json, string url)
@@ -651,7 +651,7 @@ namespace Projeto_IS
             var response = await client.PutAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
-            MessageBox.Show(result);
+            //MessageBox.Show(result); para testes
         }
 
         private void cancelar_Click(object sender, EventArgs e)
